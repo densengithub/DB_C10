@@ -1,0 +1,103 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 02 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, big endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           SMARISC
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          71728 (bytes into file)
+  Flags:                             0x1, no delay
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         1
+  Size of section headers:           40 (bytes)
+  Number of section headers:         13
+  Section header string table index: 10
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .reset            PROGBITS        00000000 002000 000064 00  AX  0   0  4
+  [ 2] .text             PROGBITS        00000064 002064 000cf8 00  AX  0   0  4
+  [ 3] .eh_frame         PROGBITS        00000d5c 002d5c 000180 00   A  0   0  4
+  [ 4] .data             PROGBITS        00000edc 002edc 000004 00  WA  0   0  4
+  [ 5] .bss              NOBITS          00000ee0 002ee0 0000a0 00  WA  0   0  4
+  [ 6] .stack            NOBITS          00000f80 002ee0 000400 00  WA  0   0  1
+  [ 7] .stab             PROGBITS        00000000 002ee0 003624 0c      9   0  4
+  [ 8] .comment          PROGBITS        00000000 006504 00002c 01  MS  0   0  1
+  [ 9] .stabstr          STRTAB          00000000 006530 00aeb9 00      0   0  1
+  [10] .shstrtab         STRTAB          00000000 0117d1 00005c 00      0   0  1
+  [11] .symtab           SYMTAB          00000000 0113ec 000290 10     12  19  4
+  [12] .strtab           STRTAB          00000000 01167c 000155 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x002000 0x00000000 0x00000000 0x00ee0 0x01380 RWE 0x2000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .reset .text .eh_frame .data .bss .stack 
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+The decoding of unwind sections for machine type SMARISC is not currently supported.
+
+Symbol table '.symtab' contains 41 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 SECTION LOCAL  DEFAULT    1 
+     2: 00000064     0 SECTION LOCAL  DEFAULT    2 
+     3: 00000d5c     0 SECTION LOCAL  DEFAULT    3 
+     4: 00000edc     0 SECTION LOCAL  DEFAULT    4 
+     5: 00000ee0     0 SECTION LOCAL  DEFAULT    5 
+     6: 00000f80     0 SECTION LOCAL  DEFAULT    6 
+     7: 00000000     0 SECTION LOCAL  DEFAULT    7 
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 FILE    LOCAL  DEFAULT  ABS alt_cpu_crt0.c
+    11: 00000000     0 FILE    LOCAL  DEFAULT  ABS ticktimer.c
+    12: 00000ee8     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick2
+    13: 00000ee0     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick2Offset
+    14: 00000eec     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick1
+    15: 00000ee4     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick1Offset
+    16: 00000000     0 FILE    LOCAL  DEFAULT  ABS gpio.c
+    17: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
+    18: 00000ef0   144 OBJECT  LOCAL  DEFAULT    5 gptPwmHandle
+    19: 000001c8   180 FUNC    GLOBAL DEFAULT    2 startTimer
+    20: 0000048c   104 FUNC    GLOBAL DEFAULT    2 getGpioValue
+    21: 00000c68     0 NOTYPE  GLOBAL HIDDEN     2 __udivsi3_internal
+    22: 00000000   100 FUNC    GLOBAL DEFAULT    1 reset
+    23: 00000c68   244 FUNC    GLOBAL HIDDEN     2 __udivsi3
+    24: 00000ee0     0 NOTYPE  GLOBAL DEFAULT    5 _bss_start
+    25: 00000ee0     0 NOTYPE  GLOBAL DEFAULT    4 _dst_end
+    26: 00000118    56 FUNC    GLOBAL DEFAULT    2 getTimer
+    27: 00000f80     0 NOTYPE  GLOBAL DEFAULT    5 _bss_end
+    28: 0000034c   100 FUNC    GLOBAL DEFAULT    2 getDurationInUs
+    29: 0000027c   208 FUNC    GLOBAL DEFAULT    2 getDuration
+    30: 00001380     0 NOTYPE  GLOBAL DEFAULT    6 __end
+    31: 000003b0   116 FUNC    GLOBAL DEFAULT    2 setGpioDir
+    32: 00000c30    56 FUNC    GLOBAL HIDDEN     2 __mulsi3
+    33: 00000064     0 NOTYPE  GLOBAL DEFAULT    2 _dst_beg
+    34: 00000560  1744 FUNC    GLOBAL DEFAULT    2 main
+    35: 00000064   180 FUNC    GLOBAL DEFAULT    2 getCurTimer
+    36: 0000018c    60 FUNC    GLOBAL DEFAULT    2 stopTimer
+    37: 00000424   104 FUNC    GLOBAL DEFAULT    2 setGpioMode
+    38: 00000150    60 FUNC    GLOBAL DEFAULT    2 resetTimer
+    39: 000004f4   108 FUNC    GLOBAL DEFAULT    2 setGpioValue
+    40: 00001380     0 NOTYPE  GLOBAL DEFAULT    6 _stack
+
+No version information found in this file.

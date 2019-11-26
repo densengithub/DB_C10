@@ -1,0 +1,128 @@
+/*
+ * RGB LCD Initialization Script
+ *
+ * Date          : 2018/6/4
+ * Chip Type     : IT970
+ * Resolution    : 600x1024
+ * Color format  : RGB565
+ * LCD interface : 24-bits
+ * 
+ */
+
+/* ************************************************* */
+/*               Please don't remove!                */
+/* ************************************************* */
+/*!NTIsMCwtMSwtMSwwLDEwMjQsNjAwLDAsMiwwLDEzNTQsMTAsMTYwLDAsMCwxNjAsNjM3LDIsMjMsMCwwLDEyLDAsMCwyLDAsMA==!*/
+
+/* ************************************************* */
+/*     IT970, RGB Interface mode, Clock Setting      */
+/* ************************************************* */
+WRITE(0xD8000028, 0x002ac801);
+WRITE(0xD8000044, 0xC00ac801); // KCLK      PLL3_OUT1 / 1 (MIPI       52MHz)  
+WRITE(0xD8000048, 0x0002c803); // KESCCLK   PLL3_OUT1 / 3 (MIPI       17MHz)                                        
+WRITE(0xD800004C, 0xC002c801); // KDSICLK   PLL3_OUT1 / 1 (MIPI       52MHz)   
+
+/* ************************************************* */
+/*              PLL3 ck3_n1, 0xD8000000              */
+/* ************************************************* */
+WRITE(0xD8000120, 0x20451001);
+WRITE(0xD8000124, 0x80000000);
+WRITE(0xD8000124, 0xF3000000);
+wait(220);          //IDLE 220us
+WRITE(0xD8000124, 0x80000000);
+
+/* ************************************************* */
+/*            General Setting 0xd000_0000            */
+/* ************************************************* */
+WRITE(0xD0000000, 0x70000071);    // DRAM mode, dclk, Falling latch, LCD vertical rot180 = rot90 for MIPI panel
+WRITE(0xD0000004, 0x0F7F0A60);    // SRC:RGB565,dst 24-bits
+WRITE(0xD0000008, (1024<<16) | 600);
+WRITE(0xD000000C, 1200);
+WRITE(0xD0000010, ${CFG_LCDA_ADDR});
+WRITE(0xD0000014, ${CFG_LCDA_ADDR});
+WRITE(0xD0000018, ${CFG_LCDA_ADDR});
+
+/* ************************************************* */
+/*                  Test Color Mode                  */
+/* ************************************************* */
+WRITE(0xD0000020, 0x800000FF);    // test color mode=0, None
+
+/* ************************************************* */
+/*             Port Setting 0xD000_0000              */
+/* ************************************************* */
+WRITE(0xD0000070, 0x00010300);    // ctg_reset_on
+wait(1);                          // 1 us
+WRITE(0xD0000070, 0x00000300);    // ctg_reset_off
+
+WRITE(0xD0000070, 0x00000307);    // enable ctg 0 1 2
+WRITE(0xD0000074, 0x027D054A);    // htotal=0x054A, vtotal=0x027D
+
+//MIPI enable
+WRITE(0xd0000230, 0x00000016);   //[0]:MIPI enable,[1]:HsyncValue,[2]:VsyncValue,[3]:DEValue
+wait(1);                    //1 us
+WRITE(0xd0000230, 0x00000017);   //[0]:MIPI enable
+wait(5);                     //5 us
+
+//CTG0(Hsync)
+WRITE(0xD0000078, 0x2001054A);    // set0,p1, line x=htotal,        y=1
+WRITE(0xD000007C, 0x1001000A);    // set1,p2       x=HOR.SYNC TIME, y=1
+WRITE(0xD0000080, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000084, 0x00000000);    // set0,p4(0x0,0)
+//CTG1(Vsync)
+WRITE(0xD0000088, 0x6001054A);    // set0,p1 ,frame  x=htotal, y=1
+WRITE(0xD000008C, 0x1003054A);    // set1,p2         x=htotal, y=VER.SYNC TIME+1
+WRITE(0xD0000090, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000094, 0x00000000);    // set0,p4(0x0,0)
+//CTG2(DE)
+WRITE(0xD0000098, 0x101B00AA);    // set1,p1, line
+WRITE(0xD000009C, 0x227304AA);    // set0,p2 x=HOR.SYNC TIME+HBP+Hor. display area y=(VER.SYNC TIME+1)+VBP+1+Ver. display area
+WRITE(0xD00000A0, 0x101B00AA);    // set1,p3
+WRITE(0xD00000A4, 0x227304AA);    // set0,p4
+
+//LCD IO output mode
+//WRITE(0xD0000110, 0x0000000F);    // (0x0000000F DEFAULT VALUE)
+
+//---------------------------------
+//MIPI
+//---------------------------------
+WRITE(0xD800004C,0x0002c001);  //MIPI controller normal
+WAIT(1); 
+WRITE(0xD8000048,0x8002c003);  //DPHY Enable
+WAIT(100);                     //100us
+WRITE(0xD8000044,0x400ac001);  //DPHY PORn rst normal
+WAIT(75);                      //75us
+WRITE(0xD8000044,0x000ac001);  //DPHY ResetN rst normal
+WAIT(200);                     //200us
+
+//----------HS-----------//
+WRITE(0xd0c00004,0x00cf028a); //+0x6[7]=BLLP, +0x04[0]=EOTPGE
+WRITE(0xd0c00008,0x00640064);
+WRITE(0xd0c00010,0x000f0000);
+WRITE(0xd0c00014,0x0000003e);  //RGB666(0x1E),RGB888(0x3E)
+WRITE(0xd0c00018,0x00241029);  //+0x18[5:0]=CLWR
+WRITE(0xd0c0001c,0x00000000);  //24-bit pixel
+WRITE(0xd0c00020,0x00000400);  //HACT=1024(0x0400)
+WRITE(0xd0c00028,0x00000c00);  //1024*3(0x0c00)
+//WRITE d0c0003c 000000ff f
+WRITE(0xd0c00048,0x00000005);  //+0x48[6]=HSE Pkt
+//WRITE d0c00050 000006a0 f
+WRITE(0xd0c00054,0x00000000);  // HSS(4)+HSA*3+HSE(4)+HBP*3+4+HACT*3+2+HFP*3
+WRITE(0xd0c00058,0x00000010);
+WRITE(0xd0c00080,0x00170002);  // VBP=23(0x17),VSA=2(0x02)
+WRITE(0xd0c00084,0x0258000c);  // VACT=600(0x0258),VFP=12(0x0c)
+WRITE(0xd0c00088,0x03500000);  // HBP=140*3(0x01a4),HSA=20*3(0x3c)
+WRITE(0xd0c0008c,0x00000010);  // HFP=160*3(0x01e0)
+
+WRITE(0xd0c00050,0x00000020);  // pixel fifo threshold
+
+WAIT  (10);
+
+WAIT  (150);
+//-------------MIPI END----------------
+
+/* ************************************************* */
+/*                    Enable LCD                     */
+/* ************************************************* */
+WRITE(0xD000001C, 0x00000001);    // SyncEn
+wait(1); // IDLE 1                // 1 us
+WRITE(0xD000001C, 0x00000003);    // SyncEn DisplayEn

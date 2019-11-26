@@ -1,0 +1,209 @@
+/*
+ * CPU Interface LCD Initialization Script
+ *
+ * Date          : 2017/12/21
+ * Chip Type     : IT9850
+ * Resolution    : 160x120
+ * Color format  : RGB565
+ * LCD interface : 16-bits
+ * 
+ */
+
+/* ************************************************* */
+/*               Please don't remove!                */
+/* ************************************************* */
+/*!MSwzLjMsMCwxNjAsMTIwLC0xLDAsMCwwLDJjLDAsY21kIDB4QUUgIC8vIERpc3BsYXkgT0ZGXHJcbmNtZCAweDIwICAvLyBTZXQgTWVtb3J5IGFkZHJlc3NpbmcgbW9kZVxyXG5jbWQgMHg4MSAgLy8gU2V0IGNvbnRyYXN0IGNvbnRyb2xcclxuY21kIDB4RDBcclxuY21kIDB4QTAgIC8vIFNlZ21lbnQgcmVtYXBcclxuY21kIDB4QTYgIC8vIE5vcm1hbCBkaXNwbGF5XHJcbmNtZCAweEE5ICAvLyBTZXQgRGlzcGxheSBSZXNvbHV0aW9uXHJcbmNtZCAweDAyICAvLyAxNjAqMTI4XHJcbmNtZCAweEFEICAvLyBTZXQgZXh0ZXJuYWwgVlBQXHJcbmNtZCAweDgwXHJcbmNtZCAweEMwICAvLyBTZXQgQ29tbW9uIHNjYW4gZGlyZWN0aW9uXHJcbmNtZCAweEQ1ICAvLyBEaXZpZGUgUmF0aW8vT3NjaWxsYXRvciBGcmVxdWVuY3kgTW9kZSBTZXRcclxuY21kIDB4RjEgIC8vIDEwMEh6XHJcbmNtZCAweEQ5ICAvLyBTZXQgRGlzLWNoYXJnZS9QcmUtY2hhcmdlIFBlcmlvZFxyXG5jbWQgMHgxM1xyXG5jbWQgMHhEQiAgLy8gU2V0IFZjb21oIHZvbHRhZ2VcclxuY21kIDB4MkIgIC8vIDAuNjg3KlZQUFxyXG5jbWQgMHhEQyAgLy8gU2V0IFZTRUdNIERlc2VsZWN0IExldmVsXHJcbmNtZCAweDM1XHJcbmNtZCAweDMwICAvLyBTZXQgRGlzY2hhcmdlIFZTTCBMZXZlbHtcJTQ0fTBWXHJcbmRseSAxMzAwMDAwICAvLyBkZWxheSAxMzAwbXNcclxuLy9DbGVhcl9zY3JlZW4oKTsgP1xyXG5jbWQgMHhBRiAgLy8gRGlzcGxheSBPTlxyXG5kbHkgMTAwMDAwICAvLyBkZWxheSAxMDBtc1xyXG4sLyohQ1BVSUYhKi8=!*/
+
+/* ************************************************* */
+/*     IT9850, CPU Interface mode, Clock Setting     */
+/* ************************************************* */
+write(0x002A, 0x0022);
+
+/* ************************************************* */
+/*                    PLL3 ck3_n1                    */
+/* ************************************************* */
+write(0x00C0, 0x400C);
+write(0x00C2, 0x005B);
+write(0x00C4, 0x212C);
+write(0x00C4, 0x312C);
+write(0x00C4, 0x212C);
+
+write(0x0028, 0xC000);
+
+/* ************************************************* */
+/*                     LCD reset                     */
+/* ************************************************* */
+write(0x002A, 0x3022);
+wait(1); // 9850 unit: us
+write(0x002A, 0x0022);
+wait(1);
+
+
+/* ************************************************* */
+/*                 Pin Share setting                 */
+/* ************************************************* */
+write(0x8108, 0x4000);    // GPIO39
+write(0x810A, 0x5555);    // GPIO40 ~ 47 
+write(0x810C, 0x5555);    // GPIO48 ~ 55
+write(0x810E, 0x1555);    // GPIO56 ~ 63 //gpio63 mode0(gpio mode)
+
+write(0x8110, 0x0154);    // GPIO64 ~ 68 //gpio64 mode0(gpio mode)
+
+write(0x1258, 0x0000);    // enable output
+/* ************************************************* */
+/*         GPIO64=M01151CS GPIO63=M01233CS           */
+/* ************************************************* */
+write(0x8088, 0x0001);    // gpio64 output enable
+write(0x8080, 0x0001);    // gpio64 output high
+
+write(0x804a, 0x8000);    // GPIO63 output enable
+write(0x8042, 0x8000);    // GPIO63 output high
+
+write(0x8042, 0x0000);    // GPIO63 output low
+/* ************************************************* */
+/*                  General Setting                  */
+/* ************************************************* */
+write(0x1100, 0x2000);
+write(0x1102, 0x0410);
+write(0x1104, 0x8002);
+write(0x1106, 0x0000);
+write(0x1108, 0x0F00);
+write(0x110C, 0x0130);    // src: RGB565, width=160
+write(0x110E, 0x0100);    // Height=120
+write(0x1110, 0x0260);    // Display pitch=(160x2)
+write(0x1112, 0x0000);    // write(0x1112, ${CFG_LCDA_ADDR} & 0xffff);
+write(0x1114, 0x0000);    // write(0x1114, ${CFG_LCDA_ADDR} >> 16);    
+
+/* ************************************************* */
+/*              Hardware cursor Setting              */
+/* ************************************************* */
+write(0x1120, 0x0000);
+write(0x1138, 0x2000);
+
+/* ************************************************* */
+/*                RS & WR & CS timing                */
+/* ************************************************* */
+write(0x1212, 0x4132);    // RS & WR timing
+write(0x1214, 0x0050);    // CS timing
+//write(0x1210, 0x2000);    // Enable SyncData,Frame mode, WR activelow
+
+/* ************************************************* */
+/*         01123 panel initialization                */
+/* ************************************************* */
+write(0x121A, 0xA0AE); // WriteComm(0xAE)  // Display OFF
+wait(5);
+write(0x121A, 0xA020); // WriteComm(0x20)  // Set Memory addressing mode
+wait(5);
+write(0x121A, 0xA081); // WriteComm(0x81)  // Set contrast control
+wait(5);
+write(0x121A, 0xA0D0); // WriteComm(0xD0)
+wait(5);
+write(0x121A, 0xA0A0); // WriteComm(0xA0)  // Segment remap
+wait(5);
+write(0x121A, 0xA0A6); // WriteComm(0xA6)  // Normal display
+wait(5);
+write(0x121A, 0xA0A9); // WriteComm(0xA9)  // Set Display Resolution
+wait(5);
+write(0x121A, 0xA002); // WriteComm(0x02)  // 160*128
+wait(5);
+write(0x121A, 0xA0AD); // WriteComm(0xAD)  // Set external VPP
+wait(5);
+write(0x121A, 0xA080); // WriteComm(0x80)
+wait(5);
+write(0x121A, 0xA0C0); // WriteComm(0xC0)  // Set Common scan direction
+wait(5);
+write(0x121A, 0xA0D5); // WriteComm(0xD5)  // Divide Ratio/Oscillator Frequency Mode Set
+wait(5);
+write(0x121A, 0xA0F1); // WriteComm(0xF1)  // 100Hz
+wait(5);
+write(0x121A, 0xA0D9); // WriteComm(0xD9)  // Set Dis-charge/Pre-charge Period
+wait(5);
+write(0x121A, 0xA013); // WriteComm(0x13)
+wait(5);
+write(0x121A, 0xA0DB); // WriteComm(0xDB)  // Set Vcomh voltage
+wait(5);
+write(0x121A, 0xA02B); // WriteComm(0x2B)  // 0.687*VPP
+wait(5);
+write(0x121A, 0xA0DC); // WriteComm(0xDC)  // Set VSEGM Deselect Level
+wait(5);
+write(0x121A, 0xA035); // WriteComm(0x35)
+wait(5);
+write(0x121A, 0xA030); // WriteComm(0x30)  // Set Discharge VSL Level,0V
+//wait(5);
+//wait(1300000);  // delay 1300ms  // delay 1300ms
+//write(0x121A, 0xA0AF); // WriteComm(0xAF)  // Display ON
+//wait(5);
+//wait(100000);  // delay 100ms  // delay 100ms
+
+/* ************************************************* */
+/*               panel initialization                */
+/* ************************************************* */
+write(0x8042, 0x8000);    // GPIO63 output high
+write(0x8080, 0x0000);    // gpio64 output low
+
+//wait(5);
+write(0x121A, 0xA0AE); // WriteComm(0xAE)  // Set Display Off
+wait(5);
+write(0x121A, 0xA0D5); // WriteComm(0xD5)  // Set Display Clock Divide Ratio/Oscillator Frequency
+wait(5);
+write(0x121A, 0xA050); // WriteComm(0x50)  // 50  125hz
+wait(5);
+write(0x121A, 0xA0D9); // WriteComm(0xD9)  // Set Discharge/Precharge Period
+wait(5);
+write(0x121A, 0xA02F); // WriteComm(0x2F)  // 1F
+wait(5);
+write(0x121A, 0xA040); // WriteComm(0x40)  // Set Display Start Line	40
+wait(5);
+write(0x121A, 0xA000); // WriteComm(0x00)
+wait(5);
+write(0x121A, 0xA0A4); // WriteComm(0xA4)  // Set Entire Display OFF/ON
+wait(5);
+write(0x121A, 0xA0A6); // WriteComm(0xA6)  // Set Normal/Reverse Display
+wait(5);
+write(0x121A, 0xA0A8); // WriteComm(0xA8)  // Set Multiplex Ration
+wait(5);
+write(0x121A, 0xA05F); // WriteComm(0x5F)
+wait(5);
+write(0x121A, 0xA0AD); // WriteComm(0xAD)  // DC-DC Setting
+wait(5);
+write(0x121A, 0xA080); // WriteComm(0x80)  // DC-DC is disable
+wait(5);
+write(0x121A, 0xA0D3); // WriteComm(0xD3)  // Set Display Offset
+wait(5);
+write(0x121A, 0xA000); // WriteComm(0x00)
+wait(5);
+write(0x121A, 0xA0DB); // WriteComm(0xDB)  // Set VCOM Deselect Level
+wait(5);
+write(0x121A, 0xA030); // WriteComm(0x30)  // 0x30	1:0x30;2:0X2C; 3:0X2E
+wait(5);
+write(0x121A, 0xA0DC); // WriteComm(0xDC)  // Set VSEGM Level
+wait(5);
+write(0x121A, 0xA005); // WriteComm(0x05)  // 0x30
+wait(5);
+write(0x121A, 0xA030); // WriteComm(0x30)  // Set Discharge VSL Level  1.5*VREF
+wait(5);
+write(0x121A, 0xA081); // WriteComm(0x81)  // The Contrast Control Mode Set
+wait(5);
+write(0x121A, 0xA0A0); // WriteComm(0xA0)  // 40
+wait(5);
+write(0x121A, 0xA0A0); // WriteComm(0xA0)  // Set Segment Re-map
+wait(5);
+write(0x121A, 0xA0C0); // WriteComm(0xC0)  // Set Common Output Scan Direction
+//wait(5);
+//write(0x121A, 0xA0AF); // WriteComm(0xAF)  // Set Display On
+
+/* ************************************************* */
+/*                 Interface Setting                 */
+/* ************************************************* */
+//write(0x1216, 0x002C);    // SyncData[15:0]=2C, for Panel spec.
+//write(0x1218, 0x0000);    // SyncData[23:16]=0
+
+//write(0x1210, 0x2000);    // CS='0', WR Active low, sync data enable or disable
+//write(0x121A, 0x3000);    // RS='1'
+
+/* ************************************************* */
+/*                    Enable LCD                     */
+/* ************************************************* */
+//write(0x111E, 0x0001);
+//wait(1);
+//write(0x111E, 0x0003);

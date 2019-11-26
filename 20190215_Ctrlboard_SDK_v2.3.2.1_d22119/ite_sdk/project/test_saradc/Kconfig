@@ -1,0 +1,76 @@
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.txt.
+#
+
+mainmenu "Project Configuration"
+
+config DEF_CHIP_PKG_IT976
+    def_bool y
+
+config CMAKE_SOURCE_DIR
+    string
+    option env="CMAKE_SOURCE_DIR"
+
+config UART1_ENABLE
+    def_bool y
+
+config GPIO_UART1_TX
+    default "4"
+
+config GPIO_UART1_RX
+    default "-1"
+
+config AXISPI_ENABLE
+    def_bool n
+
+config SPI_ENABLE
+    def_bool n
+
+config DEF_DBG_UART1
+    def_bool y
+
+config DEF_CHIP_PKG_IT976
+    def_bool y
+
+config DBG_INIT_SCRIPT
+    default "IT970A0_396Mhz_DDR2_200Mhz.txt"
+
+config USB0_ENABLE
+    def_bool y
+
+config MSC_ENABLE
+    def_bool y
+
+config FS_FAT
+    def_bool y
+
+config TASK_DRIVE_PROBE
+    def_bool y
+
+config SARADC_ENABLE
+    def_bool y
+
+source "$CMAKE_SOURCE_DIR/sdk/Kconfig"
+
+menu "Test SARADC"
+
+choice
+    prompt "SARADC TEST"
+    default TEST_ALL_XAIN
+    help
+        Test SARADC module.
+
+config TEST_ALL_XAIN
+    bool "Test all XAIN"
+    help
+        Test all XAIN GPIO.
+
+config TEST_KEYPAD_16KEY
+    bool "Test 16Key keypad"
+    help
+        Test 16Key keypad through one XAIN only.
+
+endchoice
+
+endmenu

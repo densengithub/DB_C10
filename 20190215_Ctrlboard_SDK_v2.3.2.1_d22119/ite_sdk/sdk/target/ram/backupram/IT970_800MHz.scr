@@ -1,0 +1,225 @@
+// ============================================================================================
+// Initial script for IT970
+// 2017 (c) ITE Tech. Corp.
+// Date: 2017/11/28
+// ============================================================================================
+
+// ============================================================================================
+// Reset and enable clock
+// ============================================================================================
+if (read_mask(0xd8000000, 0x00000003)!=0x0003) {    // Booting mode
+    write(0xd800000c, 0x002a8801);  // Do not reset AXI/ARM
+    write(0xd8000018, 0x002a8804);  // Do not reset AHB, SD/SD1/SD0
+    write(0xd800001c, 0x7fff8804);  // Do not reset APB
+    write(0xd8000050, 0x6c000c02);  // Do not reset RISC bus to store the booting info on register
+    write(0xd800006c, 0x000a8801);  // Do not reset NOR
+} else {
+    write(0xd800000c, 0xc02a8801);  // AX2CLK    PLL1_OUT1 / 1 (AX2CLK      792MHz, ACLK 396MHz)
+    write(0xd8000018, 0xf02a8804);  // NCLK      PLL1_OUT1 / 4 (AHB/RISC    198MHz)
+    write(0xd800001c, 0xffff8804);  // WCLK      PLL1_OUT1 / 4 (APB         198MHz)
+    write(0xd8000050, 0xec000c02);  // Reset and Enable RISC clock
+    write(0xd800006c, 0x800a8801);  // SCLK      PLL1_OUT1 / 1 (SPI        400MHz)
+}
+
+write(0xd8000010, 0x80028804);      // MPHYCLK   PLL1_OUT1 / 4 (Memory PHY  198MHz)
+write(0xd8000014, 0x802a9803);      // MCLK      PLL1_OUT2 / 3 (Memory wrap 324MHz)
+write(0xd8000008, 0x80028808);      // BCLK      PLL1_OUT1 / 8 (BIST        99MHz)
+write(0xd8000020, 0x00aaaaaa);      // Enable APB Clock
+write(0xd8000024, 0xc2af9802);      // GCLK      PLL1_OUT2 / 2 (2D         486MHz)
+write(0xd8000028, 0xe02ac801);      // DCLK      PLL3_OUT1 / 1 (LCD        166MHz)
+write(0xd800002c, 0xc02a8803);      // DPCLK     PLL1_OUT1 / 3 (DPCLK      264MHz)
+write(0xd8000030, 0xfcaa8802);      // ICLK      PLL1_OUT1 / 2 (VP         200MHz)
+write(0xd8000034, 0xcaaa8802);      // XCLK      PLL1_OUT1 / 2 (Video      200MHz)
+write(0xd8000038, 0xc02a9804);      // JCLK      PLL1_OUT2 / 4 (JPEG       133MHz)
+write(0xd800003c, 0xf0aac804);      // ZCLK      PLL3_OUT1 / 4 (LCD       41.5MHz)
+write(0xd8000040, 0x0002c802);      // AMCLK     PLL3_OUT1 / 2 (AMCLK       83MHz)
+write(0xd8000044, 0xc00a8804);      // KCLK      PLL1_OUT1 / 4 (MIPI       100MHz)
+write(0xd8000048, 0x00028814);      // KESCCLK   PLL1_OUT1 / 20(MIPI        20MHz)
+write(0xd800004c, 0xc0029804);      // KDSICLK   PLL1_OUT2 / 4 (MIPI       133MHz)
+write(0xd8000054, 0x8000000a);      // Reset and Enablle TSI clock
+write(0xd8000058, 0x80029804);      // PCLK      PLL1_OUT2 / 4 (PCR        133MHz)
+write(0xd800005c, 0x802a9804);      // WSCLK     PLL1_OUT2 / 4 (WSCLK      133MHz)
+write(0xd8000060, 0xc00ad802);      // CAPCLK    PLL3_OUT2 / 2 (CAP         83MHz)
+write(0xd8000064, 0x8000000a);      // Reset and Enable USB clock
+write(0xd8000068, 0xc02a8808);      // REFCLK    PLL1_OUT1 / 8 (MAC         50MHz)
+write(0xd8000070, 0x8000000a);      // Reset and Enable UIEnc clock
+
+// Un-Reset
+write(0xd8000008, 0x00028808);      // BCLK      PLL1_OUT1 / 8 (BIST        99MHz)
+write(0xd800000c, 0x002a8801);      // AX2CLK    PLL1_OUT1 / 1 (AX2CLK      792MHz, ACLK 396MHz)
+write(0xd8000010, 0x80028804);      // MPHYCLK   PLL1_OUT1 / 4 (Memory PHY  198MHz)
+write(0xd8000014, 0x002a9803);      // MCLK      PLL1_OUT2 / 3 (Memory wrap 324MHz)
+write(0xd8000018, 0x002a8804);      // NCLK      PLL1_OUT1 / 4 (AHB/RISC    198MHz)
+write(0xd800001c, 0x00008804);      // WCLK      PLL1_OUT1 / 4 (APB         198MHz)
+write(0xd8000020, 0x00aaaaaa);      // Enable APB Clock
+write(0xd8000024, 0x02af9802);      // GCLK      PLL1_OUT2 / 2 (2D         266MHz)
+write(0xd8000028, 0x00aac801);      // DCLK      PLL3_OUT1 / 1 (LCD        166MHz)
+write(0xd800002c, 0x002a9802);      // DPCLK     PLL1_OUT2 / 2 (DPCLK      266MHz)
+write(0xd8000030, 0x00aa8802);      // ICLK      PLL1_OUT1 / 2 (VP         200MHz)
+write(0xd8000034, 0x0aaa8802);      // XCLK      PLL1_OUT1 / 2 (Video      200MHz)
+write(0xd8000038, 0x002a9804);      // JCLK      PLL1_OUT2 / 4 (JPEG       133MHz)
+write(0xd800003c, 0x00aac804);      // ZCLK      PLL3_OUT1 / 4 (LCD       41.5MHz)
+write(0xd8000044, 0x000a8804);      // KCLK      PLL1_OUT1 / 4 (MIPI       100MHz)
+write(0xd800004c, 0x00029804);      // KDSICLK   PLL1_OUT2 / 4 (JPEG       133MHz)
+write(0xd8000050, 0x00000c02);      // Reset and Enable RISC clock
+write(0xd8000054, 0x0000000a);      // Reset and Enablle TSI clock
+write(0xd8000058, 0x00029804);      // PCLK      PLL1_OUT2 / 4 (PCR        133MHz)
+write(0xd800005c, 0x002a9804);      // WSCLK     PLL1_OUT2 / 4 (WSCLK      133MHz)
+write(0xd8000060, 0x000ad802);      // CAPCLK    PLL3_OUT2 / 2 (CAP         83MHz)
+write(0xd8000064, 0x0000000a);      // Reset and Enable USB clock
+write(0xd8000068, 0x002a8808);      // REFCLK    PLL1_OUT1 / 8 (MAC         50MHz)
+write(0xd800006c, 0x000a8801);      // SCLK      PLL1_OUT1 / 1 (SPI        400MHz)
+write(0xd8000070, 0x0000000a);      // Reset and Enable UIEnc clock
+
+// Temporary setting the SD clock divider for SD boot.
+// Set thd SD clock befor adjust PLL to prevent SD clock over spec.
+// The SD clock is divided by AHB clock / 2. If the AHB clock is 324MHz, the base clock of
+// SD clock is 162MHz. Set the clock divide to 10 to get the SD clock as 16.2MHz.
+// The boot code will adjust the SD clock latter, here is just to set a safty clock speed 
+// for SD card.
+if (read_mask(0xb0a0002c, (1<<2)) != 0) {   // if SD1 clock is enabled
+    write(0xb0a0002c, 0x00000000);          // disable clock
+    wait(1);
+    write(0xb0a0002c, 0x00000001);          // enable internal clock
+    data_wait1(0xb0a0002c, (1<<1));         // wait internal clock ready
+    write(0xb0a0002c, (10<<8) | (1<<2) | (1<<0)); // set clock divider to 10
+}
+
+if (read_mask(0xb0b0002c, (1<<2)) != 0) {   // if SD2 clock is enabled
+    write(0xb0b0002c, 0x00000000);          // disable clock
+    wait(1);
+    write(0xb0b0002c, 0x00000001);          // enable internal clock
+    data_wait1(0xb0b0002c, (1<<1));         // wait internal clock ready
+    write(0xb0b0002c, (10<<8) | (1<<2) | (1<<0)); // set clock divider to 10
+}
+
+// Set Host clock to PLL2 temporary, and set it to PLL1_OUT2 latter
+// TODO
+
+// ============================================================================================
+// PLL Setting
+// ============================================================================================
+// PLL1_N1   = 12MHz     * 1/1  * 66  * 1/1 = 792MHz,
+// PLL1_N2   = 12MHz     * 1/1  * 81  * 1/1 = 972MHz,
+// ============================================================================================
+write(0xd8000108, 0x20510101);
+write(0xd800010c, 0x80000000);
+write(0xd800010c, 0xf3000000);
+wait(220);
+write(0xd800010c, 0x80000000);
+
+write(0xd8000100, 0x20420101);
+write(0xd8000104, 0x80000000);
+write(0xd8000104, 0xf3000000);
+wait(220);                          // wait pll stable
+write(0xd8000104, 0x80000000);
+
+// ============================================================================================
+// PLL2_N1   = 12MHz * 1/1 * 56  * 1/2 = 336MHz
+// PLL2_N2   = 12MHz * 1/1 * 56  * 1/2 = 336MHz
+// ============================================================================================
+write(0xd8000118, 0x20380201);
+write(0xd800011c, 0x80000000);
+write(0xd800011c, 0xf3000000);
+wait(220);
+write(0xd800011c, 0x80000000);
+
+write(0xd8000110, 0x20380201);
+write(0xd8000114, 0x80000000);
+write(0xd8000114, 0xf3000000);
+wait(220);                          // wait pll stable
+write(0xd8000114, 0x80000000);
+
+// ============================================================================================
+// PLL3_N1   = 12MHz     * 1/1  * 83  * 1/6 = 166MHz
+// PLL3_N2   = 12MHz     * 1/1  * 83  * 1/6 = 166MHz
+// PLL3_N3   = 12MHz     * 1/1  * 83  * 1/6 = 166MHz
+// ============================================================================================
+//write(0xd8000120, 0x20530601);
+//write(0xd8000124, 0x80000000);
+//write(0xd8000124, 0xf3000000);
+//wait(220);
+//write(0xd8000124, 0x80000000);
+//
+//write(0xd8000128, 0x20530601);
+//write(0xd800012c, 0x80000000);
+//write(0xd800012c, 0xf3000000);
+//wait(220);
+//write(0xd800012c, 0x80000000);
+//
+//write(0xd8000130, 0x20530601);
+//write(0xd8000134, 0x80000000);
+//write(0xd8000134, 0xf3000000);
+//wait(220);
+//write(0xd8000134, 0x80000000);
+
+// ============================================================================================
+// ADPLL2_N1 = 161.28MHz * 1/50 * 196 * 1/56 = 11.2896MHz
+// ADPLL2_N2 = 126MHz    * 1/25 * 128 * 1/4  = 161.28MHz
+// ADPLL2_N3 = 48MHz     * 1/4  * 42  * 1/4  = 126MHz
+// ============================================================================================
+//write(0xd8000150, 0x402a0404);
+//write(0xd8000154, 0x090f0000);
+
+//write(0xd8000140, 0x50800419);
+//write(0xd8000144, 0x090f0000);
+
+//write(0xd8000130, 0xd0c43832);
+//write(0xd8000134, 0x090f0000);
+
+// ============================================================================================
+// Memory controller initialized
+// ============================================================================================
+write(0xd8100350, 0x00040440);      // set ddrphy parameter: IO15V,SIO,SELFBIAS,VREF_SELECT,DLLFRANGE,DDR3,LPDDR2,MDDR1
+write(0xd8100354, 0x00000003);      // set ddrphy parameter: DSRONB,CLOCK_EN
+write(0xd8100358, 0x00008008);      // set ddrphy parameter: CONUPDATE,DUTYSEL
+
+wait(1);                            // wait 1 us
+write(0xd8100340, 0x00000001);      // release PLLPDN
+
+wait(50);                           // wait 50 us
+write(0xd8100340, 0x00000003);      // release PLLRESETN
+
+wait(1);                            // wait 1 us
+write(0xd8100340, 0x00000007);      // release DLLPDN
+
+wait(20);
+write(0xd8000010, 0x00028004);      // MPHYCLK   PLL1_OUT1 / 4 (Memory PHY  198MHz)
+
+// ============================================================================================
+// set memory controller register MRS, AC timing
+// ============================================================================================
+write(0xd8100000, 0x08035d02);      // set memory controller configure
+write(0xd8100008, 0x00040a53);      // set MRS EMRS(DQS# enable,Rtt=75ohm,WR=6,CL=5,BL=8)
+//write(0xd8100008, 0x00040a63);    // set MRS EMRS(DQS# enable,Rtt=75ohm,WR=6,CL=6,BL=8)
+//write(0xd8100010, 0x10014343);    // set rank0/rank1 type base address
+write(0xd8100010, 0x00000012);      // set rank0/rank1 type base address 64M Bytes, Row_bit 13, Col_bit 10, bank_bit 2
+//write(0xd8100014, 0x1a090a07);    // set timing parameter 0(TRFC, TFAW, TRC, TRAS)
+write(0xd8100014, 0x2b10120d);      // set timing parameter 0(TRFC, TFAW, TRC, TRAS)
+write(0xd8100018, 0x22401434);      // set timing parameter 1(TWTR,TRTP, TWR, TMOD, TMRD, TRP, TRRD, TRCD)
+write(0xd810001c, 0x01003251);      // set timing parameter 2(additional delay, TXSR, TREFI)
+write(0xd8100020, 0x00000f41);      // set DDR2/DDR3 PHY command and data block register
+//write(0xd8100024, 0x11111111);    // set DDR2/DDR3 PHY read data delay
+//write(0xd8100028, 0x00001fff);    // set DDR2/DDR3 PHY comp block register
+write(0xd8100028, 0x000007a2);      // set DDR2/DDR3 PHY comp block register
+write(0xd8100030, 0x90000000);      // set global channel arbiter parameter
+write(0xd8100034, 0x05050505);      // set grant count of channel 0 to channel 3
+write(0xd8100038, 0x05050505);      // set grant count of channel 7 to channel 4
+//write(0xd810003c, 0x00040001);    // set relationship between wrdata and dqsoe, rddata and rdcmd
+write(0xd810003c, 0x00010011);      // set relationship between wrdata and dqsoe, rddata and rdcmd
+//write(0xd8100074, 0x11111111);    // set dqs filtering window
+write(0xd8100074, 0x22222222);      // set dqs filtering window
+//write(0xd8100134, 0x00f7c475);    // set dutysel and ronmd
+
+// ============================================================================================
+// fire memory controller to initiate memory
+// ============================================================================================
+wait(100);                          // wait 100 us
+write(0xd8100340, 0x0000040f);      // release RESETN
+write(0xd8100138, 0x00000105);      // reset elastic fifo(EFIFO)
+write(0xd8100004, 0x00000001);      // fire memory initiated sequence
+write(0xd8100358, 0x00000008);      // set ddrphy parameter: CONUPDATE,DUTYSEL
+
+// GPIO settings
+WRITE(0xD1000044, 0x00000010);
+WRITE(0xD1000058, 0xaaaaa8aa);

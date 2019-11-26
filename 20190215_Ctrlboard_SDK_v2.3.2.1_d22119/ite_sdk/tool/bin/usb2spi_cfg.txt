@@ -1,0 +1,291 @@
+////////////////////////////////////////////////////////////
+NAND_Support_List_START:
+
+//SPI NAND Config Format
+//{ name, MID, DID1, DID2, bytesPerPage, pagesPerBlock, totalBlocks, bytesPerSpare},
+//Description of each attribute
+//  name:      string(Max 32bytes)
+//  MID:       Hexformat 0xXX (upper case)
+//  DID1:      Hexformat 0xXX (upper case)
+//  DID2:      Hexformat 0xXX (upper case)
+//  bytesPerPage:   integer
+//  pagesPerBlock:  integer
+//  totalBlocks:    integer
+//  bytesPerSpare:  integer
+
+{ "GD_5F1GQ4UC", 0xC8, 0xB1, 0x48, 1, 2048, 64, 1024, 128 },
+{ "GD_5F2GQ4UC", 0xC8, 0xB2, 0x48, 1, 2048, 64, 2048, 128 },
+{ "GD_5F4GQ4UC", 0xC8, 0xB4, 0x68, 1, 4096, 64, 2048, 256 },
+{ "GD_5F1GQ4UB", 0xC8, 0xD1, 0x00, 1, 2048, 64, 1024, 128 },
+{ "GD_5F2GQ4UB", 0xC8, 0xD2, 0x00, 1, 2048, 64, 2048, 128 },
+{ "MX35LF1GE4AB", 0xC2, 0x12, 0x00, 2, 2048, 64, 1024, 128 },
+{ "MX35LF2GE4AB", 0xC2, 0x22, 0x00, 2, 2048, 64, 2048, 128 },
+{ "W25N01GV", 0xEF, 0xAA, 0x21, 3, 2048, 64, 1024, 128 },
+{ "PN26G01AWSIUG", 0xA1, 0xE1, 0x00, 4, 2048, 64, 1024, 128 },
+{ "ATO1G", 0x9B, 0x12, 0x00, 4, 2048, 64, 1024, 64 },
+{ "XT26G01A", 0x0B, 0xE1, 0x00, 4, 2048, 64, 1024, 64 },
+{ "XT26G02A", 0x0B, 0xE2, 0x00, 4, 2048, 64, 2048, 64 },
+{ "ATO25D1GA", 0x9B, 0x12, 0x00, 4, 2048, 64, 1024, 64 },
+{ "TC58CVG2S0HRAIG", 0x98, 0xCD, 0x00, 5, 4096, 64, 2048, 128 },
+	
+NAND_Support_List_END
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+NOR_Support_List_START:
+
+// Nor Config Format
+//{ name, ManufatureID, DeviceID, DeviceID2, bytesPerPage, pagesPerSector, bytesPerSector, sectorsPerBlock, totalBlocks},
+//Description of each attribute
+//  name:           string(Max 32bytes)
+//  ManufatureID:   Hexformat 0xXX (upper case)
+//  DeviceID:       Hexformat 0xXXXX (upper case)
+//  DeviceID2:      Hexformat 0xXX (upper case)
+//  bytesPerPage:   integer
+//  pagesPerSector: integer
+//  bytesPerSector: integer
+//  sectorsPerBlock:integer
+//  totalBlocks:    integer
+
+{AMIC_A25L032,      0x37, 0x3016, 0x15, 256, 256, 65536, 1, 64},
+{AMIC_A25LQ32A,     0x37, 0x4016, 0x15, 256, 256, 65536, 1, 64},
+{ATMEL_AT26DF161,   0x1F, 0x4600, 0xFF, 256, 256, 65536, 1, 32},
+{ATMEL_AT26D321,    0x1F, 0x4700, 0xFF, 256, 256, 65536, 1, 64},
+{EON_EN25P32,       0x1C, 0x2016, 0x15, 256, 256, 65536, 1, 64},
+{EON_EN25B16,       0x1C, 0x2015, 0x34, 256, 256, 65536, 1, 32},
+{EON_EN25B32,       0x1C, 0x2016, 0x35, 256, 256, 65536, 1, 64},
+{EON_EN25B64,       0x1C, 0x2017, 0x36, 256, 256, 65536, 1, 128},
+{EON_EN25F16,       0x1C, 0x3115, 0x14, 256, 256, 65536, 1, 32},
+{EON_EN25F32,       0x1C, 0x3116, 0x15, 256, 256, 65536, 1, 64},
+{EON_EN25Q16,       0x1C, 0x3015, 0x14, 256, 256, 65536, 1, 32},
+{EON_EN25Q32A,      0x1C, 0x3016, 0x15, 256, 256, 65536, 1, 64},
+{EON_EN25F80,       0x1C, 0x3114, 0x13, 256, 256, 65536, 1, 16},
+{EON_EN25Q80A,      0x1C, 0x3014, 0x13, 256, 256, 65536, 1, 16},
+{EON_EN25Q64,       0x1C, 0x3017, 0x16, 256, 256, 65536, 1, 128},
+{EON_EN25QH32,      0x1C, 0x7016, 0x15, 256, 256, 65536, 1, 64},
+{ES_ES25M16A,       0x4A, 0x3215, 0x14, 256, 256, 65536, 1, 32},
+{ESMT_F25L16A,      0x8C, 0x2015, 0x14, 256, 256, 65536, 1, 32},
+{ESMT_F25L32Q,      0x8C, 0x4116, 0x15, 256, 256, 65536, 1, 64},
+{ESMT_F25L32PA,     0x8C, 0x2016, 0x15, 256, 256, 65536, 1, 64},
+{FS_25Q128F2TFI,    0xA1, 0x4018, 0x17, 256, 256, 65536, 1, 256},
+{Micron_N25Q032A,   0x20, 0xBA16, 0xFF, 256, 256, 65536, 1, 64},
+{NUMON_M25P20,      0x20, 0x2012, 0xFF, 256, 256, 65536, 1, 4},
+{NUMON_M25P32,      0x20, 0x2016, 0xFF, 256, 256, 65536, 1, 64},
+{DS_25Q64M,         0x20, 0x7017, 0x16, 256, 256, 65536, 1, 128},
+{DS_25Q4AM,         0x20, 0x7018, 0x17, 256, 256, 65536, 1, 256},
+{MX_25L1605A,       0xC2, 0x2015, 0x14, 256, 256, 65536, 1, 32},
+{MX_25L3205D,       0xC2, 0x2016, 0x15, 256, 256, 65536, 1, 64},
+{MX_25L3235D,       0xC2, 0x5E16, 0x5E, 256, 256, 65536, 1, 64},
+{MX_25L1635D,       0xC2, 0x2415, 0x24, 256, 256, 65536, 1, 32},
+{MX_25L6445E,       0xC2, 0x2017, 0x16, 256, 256, 65536, 1, 128},
+{MX_25L12835F,      0xC2, 0x2018, 0x17, 256, 256, 65536, 1, 256},
+{MX_25L25735F,      0xC2, 0x2019, 0x18, 256, 256, 65536, 1, 512},
+{MX_25L51245G,      0xC2, 0x201A, 0x19, 256, 256, 65536, 1, 512},
+{GD_GD25Q64B,       0xC8, 0x4017, 0x16, 256, 256, 65536, 1, 128},
+{GD_GD25Q32,        0xC8, 0x4016, 0x15, 256, 256, 65536, 1, 64},
+{GD_GD25Q16,        0xC8, 0x4015, 0x14, 256, 256, 65536, 1, 32},
+{GD_GD25Q128C,      0xC8, 0x4018, 0x17, 256, 16, 4096, 16, 256},
+{GD_GD25Q256D,      0xC8, 0x4019, 0x18, 256, 16, 4096, 16, 512},
+{GD_GD25Q512MC,     0xC8, 0x4020, 0x19, 256, 16, 4096, 16, 1024},
+{PMC_PM25LQ032C,    0x7F, 0x9D46, 0x15, 256, 256, 65536, 1, 32},
+{SPAN_S25FL016A,    0x01, 0x0214, 0xFF, 256, 256, 65536, 1, 32},
+{SPAN_S25FL032A,    0x01, 0x0215, 0xFF, 256, 256, 65536, 1, 64},
+{SST_25VF016B,      0xBF, 0x2541, 0x41, 512, 128, 65536, 1, 32},
+{WIN_W25X16A,       0xEF, 0x3015, 0x14, 256, 256, 65536, 1, 32},
+{WIN_W25X32V,       0xEF, 0x3016, 0x15, 256, 256, 65536, 1, 64},
+{WIN_W25Q32BV,      0xEF, 0x4016, 0x15, 256, 256, 65536, 1, 64},
+{WIN_W25Q64BV,      0xEF, 0x4017, 0x16, 256, 256, 65536, 1, 128},
+{WIN_W25Q128JV,     0xEF, 0x4018, 0x17, 256, 256, 65536, 1, 256},
+{SPAN_S25FL127S,    0x01, 0x0017, 0xFF, 256, 256, 65536, 1, 256},
+{BY_25Q64AS,        0x68, 0x4017, 0x16, 256, 256, 65536, 1, 128},
+{BY_25Q128AS,       0x68, 0x4018, 0x17, 256, 256, 65536, 1, 256},
+{ZB_25VQ64,         0x5E, 0x4017, 0x16, 256, 256, 65536, 1, 128},
+{ZB_25VQ128,        0x5E, 0x4018, 0x17, 256, 256, 65536, 1, 256},
+
+NOR_Support_List_END
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+IndirectAddress_CFG_Start:
+
+0x9850 GeneralReg 0xD8000000
+0x9850 Memory     0xD8100000
+0x9850 GPIO       0xDE000000
+0x9850 RISC       0xC0200000
+0x9850 USB0       0xC0400000
+0x9850 USB1       0xC0500000
+0x9850 CMDQ       0xC0600000
+0x9850 2D         0xC0700000
+0x9850 MAC        0xC0800000
+0x9850 H264       0xC2000000
+0x9850 AXISPI     0xD0000000
+0x9850 ARM        0xD8300000
+0x9850 PowerCtl   0xD8400000
+0x9850 LCD        0xDCD00000
+0x9850 I2S        0xDC100000
+0x9850 JPEG       0xDC200000
+0x9850 VP         0xDC300000
+0x9850 TSI        0xDC400000
+0x9850 TSO        0xDC600000
+0x9850 CAP        0xDC700000
+0x9850 SARADC     0xDC800000
+0x9850 DPU        0xDC900000
+0x9850 DMA        0xDCA00000
+0x9850 MIPI       0xDCC00000
+0x9850 MIPIPHY    0xDCD00000
+0x9850 I2C        0xDE100000
+0x9850 Interrupt  0xDE200000
+0x9850 Wiegand    0xDE300000
+0x9850 RTC        0xDE500000
+0x9850 UART       0xDE600000
+0x9850 SSP0       0xDE700000
+0x9850 SSP1       0xDE800000
+0x9850 Timer      0xDE900000
+0x9850 WatchDog   0xDEA00000
+0x9850 RemoteIR   0xDEB00000
+0x9850 SD         0xDEC00000
+
+0x9920 GeneralReg 0xD8000000
+0x9920 AXISPI     0xC0000000
+0x9920 MemoryReg  0xD8100000
+0x9920 GPIO       0xD1000000
+0x9920 RISC       0xB0200000
+0x9920 USB0       0xB0400000
+0x9920 USB1       0xB0500000
+0x9920 CMDQ       0xB0600000
+0x9920 2D         0xB0700000
+0x9920 MAC        0xB0800000
+0x9920 H264       0xB2000000
+0x9920 ARM        0xD8300000
+0x9920 PowerCtl   0xD8400000
+0x9920 LCD        0xD0000000
+0x9920 I2S        0xD0100000
+0x9920 JPEG       0xD0200000
+0x9920 VP         0xD0300000
+0x9920 TSI        0xD0400000
+0x9920 TSO        0xD0600000
+0x9920 CAP        0xD0700000
+0x9920 SARADC     0xD0800000
+0x9920 DPU        0xD0900000
+0x9920 DMA        0xD0A00000
+0x9920 MIPI       0xD0C00000
+0x9920 MIPIPHY    0xD0D00000
+0x9920 I2C        0xD1100000
+0x9920 Interrupt  0xD1200000
+0x9920 Wiegand    0xD1300000
+0x9920 RTC        0xD1500000
+0x9920 UART       0xD1600000
+0x9920 SSP0       0xD1700000
+0x9920 SSP1       0xD1800000
+0x9920 Timer      0xD1900000
+0x9920 WatchDog   0xD1A00000
+0x9920 RemoteIR   0xD1B00000
+0x9920 SD         0xD1C00000
+
+0x0970 AXISPI     0xC0000000
+0x0970 GeneralReg 0xD8000000
+0x0970 MemoryReg  0xD8100000
+0x0970 GPIO       0xD1000000
+0x0970 RISC       0xB0200000
+0x0970 USB0       0xB0400000
+0x0970 USB1       0xB0500000
+0x0970 CMDQ       0xB0600000
+0x0970 2D         0xB0700000
+0x0970 MAC        0xB0800000
+0x0970 H264       0xB2000000
+0x0970 ARM        0xD8300000
+0x0970 PowerCtl   0xD8400000
+0x0970 LCD        0xD0000000
+0x0970 I2S        0xD0100000
+0x0970 JPEG       0xD0200000
+0x0970 VP         0xD0300000
+0x0970 TSI        0xD0400000
+0x0970 TSO        0xD0600000
+0x0970 CAP        0xD0700000
+0x0970 SARADC     0xD0800000
+0x0970 DPU        0xD0900000
+0x0970 DMA        0xD0A00000
+0x0970 MIPI       0xD0C00000
+0x0970 MIPIPHY    0xD0D00000
+0x0970 I2C        0xD1100000
+0x0970 Interrupt  0xD1200000
+0x0970 Wiegand    0xD1300000
+0x0970 RTC        0xD1500000
+0x0970 UART       0xD1600000
+0x0970 SSP0       0xD1700000
+0x0970 SSP1       0xD1800000
+0x0970 Timer      0xD1900000
+0x0970 WatchDog   0xD1A00000
+0x0970 RemoteIR   0xD1B00000
+0x0970 SD         0xD1C00000
+
+0x0960 AXISPI     0xC0000000
+0x0960 GeneralReg 0xD8000000
+0x0960 MemoryReg  0xD8100000
+0x0960 GPIO       0xD1000000
+0x0960 RISC       0xB0200000
+0x0960 USB0       0xB0400000
+0x0960 USB1       0xB0500000
+0x0960 CMDQ       0xB0600000
+0x0960 2D         0xB0700000
+0x0960 MAC        0xB0800000
+0x0960 H264       0xB2000000
+0x0960 ARM        0xD8300000
+0x0960 PowerCtl   0xD8400000
+0x0960 LCD        0xD0000000
+0x0960 I2S        0xD0100000
+0x0960 JPEG       0xD0200000
+0x0960 VP         0xD0300000
+0x0960 TSI        0xD0400000
+0x0960 TSO        0xD0600000
+0x0960 CAP        0xD0700000
+0x0960 SARADC     0xD0800000
+0x0960 DPU        0xD0900000
+0x0960 DMA        0xD0A00000
+0x0960 MIPI       0xD0C00000
+0x0960 MIPIPHY    0xD0D00000
+0x0960 I2C        0xD1100000
+0x0960 Interrupt  0xD1200000
+0x0960 Wiegand    0xD1300000
+0x0960 RTC        0xD1500000
+0x0960 UART       0xD1600000
+0x0960 SSP0       0xD1700000
+0x0960 SSP1       0xD1800000
+0x0960 Timer      0xD1900000
+0x0960 WatchDog   0xD1A00000
+0x0960 RemoteIR   0xD1B00000
+0x0960 SD         0xD1C00000
+
+IndirectAddress_CFG_END
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+ByPassSPI_CFG_Start:
+
+0x9850 RegAddr 0x81D0
+0x9850 BpSPIEn 0x81A2	0x9
+0x9850 SCSNIO 		{ 14 10 11 13 15 16 37 38 85 }
+0x9850 SCLKIO 		{ 20 31 82 }
+0x9850 FLASHDOIO  { 18 29 83 }
+0x9850 FLASHDIIO  { 19 30 84 }
+
+0x9920 RegAddr 0xD1000230
+0x9920 BpSPIEn 0xD1000204	0x19
+0x9920 SCSNIO 		{  6  4 17 18 19 22 24 27 31 42 47 51 }
+0x9920 SCLKIO 		{  5 16 23 30 41 46 50 }
+0x9920 FLASHDOIO  {  8 19 26 33 44 49 53 }
+0x9920 FLASHDIIO  {  7 18 25 32 43 48 52 }
+
+0x0970 RegAddr 0xD1000230
+0x0970 BpSPIEn 0xD1000204	0x19
+0x0970 SCSNIO 		{  6  4 17 18 19 22 24 27 31 42 47 51 }
+0x0970 SCLKIO 		{  5 16 23 30 41 46 50 }
+0x0970 FLASHDOIO  {  8 19 26 33 44 49 53 }
+0x0970 FLASHDIIO  {  7 18 25 32 43 48 52 }
+
+0x0960 RegAddr 0xD1000230
+0x0960 BpSPIEn 0xD1000204	0x19
+0x0960 SCSNIO 		{  6  4 17 18 19 22 24 27 31 42 47 51 }
+0x0960 SCLKIO 		{  5 16 23 30 41 46 50 }
+0x0960 FLASHDOIO  {  8 19 26 33 44 49 53 }
+0x0960 FLASHDIIO  {  7 18 25 32 43 48 52 }
+
+ByPassSPI_CFG_End
+////////////////////////////////////////////////////////////

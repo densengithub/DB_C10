@@ -1,0 +1,8 @@
+.git\*
+data\*
+doc\*
+tool\*
+win32\*
+CMakeLists.txt
+wizard
+wizard.exe

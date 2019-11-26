@@ -1,0 +1,18 @@
+20190215_Ctrlboard_SDK_v2.3.2.1_d22119
+
+Release Note
+[新增]
+. test_canbus、test_dashobd2、test_wifi_usb範例程式
+. test_rtc操作說明文件
+. 點sensor工具tool\bin\capture.exe與說明文件doc\SDK編譯與開發工具\Capture Tool Introduction.docx
+
+[修正]
+. 修正sd/nor co-bus問題 e8f0ad
+. AW2 IC相關修正，包括sleep/standby mode、jpeg、video、capture等
+. 只勾選Upgrade Data及底下Upgrade Private Data、Upgrade Public Data與Upgrade Temporary Data，會升級失敗 26694c (註1)
+
+[修改]
+. 更新lcd.exe為265版本
+
+[註]
+1. 不勾選Upgrade Bootloader，不勾選Upgrade Image，不勾選Force partition與Format partition

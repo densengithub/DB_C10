@@ -1,0 +1,129 @@
+/*
+ * RGB LCD Initialization Script
+ *
+ * Date          : 2018/6/5
+ * Chip Type     : IT970
+ * Resolution    : 600x1024
+ * Color format  : RGB565
+ * LCD interface : 24-bits
+ * 
+ */
+
+/* ************************************************* */
+/*               Please don't remove!                */
+/* ************************************************* */
+/*!NTEuMiwtMSwtMSwtMSwwLDEwMjQsNjAwLDAsMiwtMSwxMzQ0LDIwLDE0MCwwLDAsMTYwLDYzNSwzLDIwLDAsMCwxMiwwLDAsMiwwLDA=!*/
+
+/* ************************************************* */
+/*     IT970, RGB Interface mode, Clock Setting      */
+/* ************************************************* */
+WRITE(0xD8000028, 0x00AAC080);
+
+/* ************************************************* */
+/*              PLL3 ck3_n1, 0xD8000000              */
+/* ************************************************* */
+WRITE(0xD8000120, 0x20441001);
+WRITE(0xD8000124, 0x80000000);
+WRITE(0xD8000124, 0xF3000000);
+wait(220);          //IDLE 220
+WRITE(0xD8000124, 0x80000000);
+
+/* ************************************************* */
+/*            General Setting 0xd000_0000            */
+/* ************************************************* */
+WRITE(0xD0000000, 0x40000070);    // DRAM mode, dclk, Falling latch, LCD vertical rot0 = rot90 for RGB panel
+WRITE(0xD0000004, 0x0F7F0A60);    // SRC:RGB565,dst 24-bits
+WRITE(0xD0000008, (1024<<16) | 600);
+WRITE(0xD000000C, 1200);
+WRITE(0xD0000010, ${CFG_LCDA_ADDR});
+WRITE(0xD0000014, ${CFG_LCDA_ADDR});
+WRITE(0xD0000018, ${CFG_LCDA_ADDR});
+
+/* ************************************************* */
+/*                  Test Color Mode                  */
+/* ************************************************* */
+WRITE(0xD0000020, 0x800000FF);    // test color mode=0, None
+//WRITE(0xD0000020, 0x830000FF);    // Color Ring   
+//WRITE(0xD0000020, 0x81FF0000);    // Red  
+//WRITE(0xD0000020, 0x8100FF00);    // Green        
+//WRITE(0xD0000020, 0x810000FF);    // Blue   
+
+/* ************************************************* */
+/*             Port Setting 0xD000_0000              */
+/* ************************************************* */
+WRITE(0xD0000070, 0x00010300);    // ctg_reset_on
+wait(1);                          // 1 μs
+WRITE(0xD0000070, 0x00000300);    // ctg_reset_off
+
+WRITE(0xD0000070, 0x00000307);    // enable ctg 0 1 2
+WRITE(0xD0000074, 0x027B0540);    // htotal=0x0540, vtotal=0x027B
+//CTG0(Hsync)
+WRITE(0xD0000078, 0x20010540);    // set0,p1, line x=htotal,        y=1
+WRITE(0xD000007C, 0x10010014);    // set1,p2       x=HOR.SYNC TIME, y=1
+WRITE(0xD0000080, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000084, 0x00000000);    // set0,p4(0x0,0)
+//CTG1(Vsync)
+WRITE(0xD0000088, 0x60010540);    // set0,p1 ,frame  x=htotal, y=1
+WRITE(0xD000008C, 0x10040540);    // set1,p2         x=htotal, y=VER.SYNC TIME+1
+WRITE(0xD0000090, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000094, 0x00000000);    // set0,p4(0x0,0)
+//CTG2(DE)
+WRITE(0xD0000098, 0x101900A0);    // set1,p1, line
+WRITE(0xD000009C, 0x227104A0);    // set0,p2 x=HOR.SYNC TIME+HBP+Hor. display area y=(VER.SYNC TIME+1)+VBP+1+Ver. display area
+WRITE(0xD00000A0, 0x101900A0);    // set1,p3
+WRITE(0xD00000A4, 0x227104A0);    // set0,p4
+
+/* ************************************************* */
+/*           Pin Share Setting 0xD100_0000           */
+/* ************************************************* */
+// GPIO40~ GPIO44(MODE3), GPIO45-GPIO62 GPIO86-GPIO90(mode 1) 128pin
+WRITE(0xD10000E4, 0x11133333);     //GPIO[47:40]
+WRITE(0xD10000E8, 0x11111111);     //GPIO[55:48]
+WRITE(0xD10000EC, 0x01111111);     //GPIO[63:56]
+WRITE(0xD1000160, 0x00000000);     //GPIO[71:64]
+WRITE(0xD1000164, 0x00000000);     //GPIO[79:72]
+WRITE(0xD1000168, 0x11000000);     //GPIO[87:80]
+WRITE(0xD100016C, 0x00000111);     //GPIO[95:88]
+
+// GPIO67~GPIO94 (mode 1) 144PIN
+//WRITE(0xD1000160, 0x11111000);    // GPIO[71:64]
+//WRITE(0xD1000164, 0x11111111);    // GPIO[79:72]
+//WRITE(0xD1000168, 0x11111111);    // GPIO[87:80]
+//WRITE(0xD100016C, 0x01111111);    // GPIO[95:88]
+
+/* ************************************************* */
+/*                pin mux(120~138)                   */
+/* ************************************************* */
+// 128pin 
+WRITE(0xD0000120, 0x0B0A0918); //D10_D9_D8_D23        03 02 01 00
+WRITE(0xD0000124, 0x0F0E0D0C); //D14_D13_D12_D11      07 06 05 04
+WRITE(0xD0000128, 0x03020110); //D2_D1_D0_D15         11 10 09 08
+WRITE(0xD000012c, 0x07060504); //D6_D5_D4_D3          15 14 13 12
+WRITE(0xD0000130, 0x191B0808); //DE_VS_D7_00          19 18 17 16
+WRITE(0xD0000134, 0x14131211); //D19_D18_D17_D16      23 22 21 20
+WRITE(0xD0000138, 0x00151617); //00_D20_D21_D22       00 vs hs de
+
+//144pin
+//WRITE(0xD0000120, 0x15141312); //D20:D17
+//WRITE(0xD0000124, 0x09181716); //D8 D23:D21
+//WRITE(0xD0000128, 0x0D0C0B0A); //D12:D9
+//WRITE(0xD000012c, 0x01100F0E); //D0 D15:D13
+//WRITE(0xD0000130, 0x05040302); //D4:D1
+//WRITE(0xD0000134, 0x19080706); //DE D7:D5
+//WRITE(0xD0000138, 0x001a1b11); //00 HS VS D16
+/* ************************************************* */
+/*               PWM: GPIO95 assign 1                */
+/* ************************************************* */
+//MUST check GPIO95 mode select
+WRITE(0xD1000108, 0x80000000); // GPIO95 set dir output
+WRITE(0xD1000100, 0x80000000); // GPIO95 set high
+
+//LCD IO output mode
+WRITE(0xD0000110, 0x00000000);    // LCD IO output mode
+
+/* ************************************************* */
+/*                    Enable LCD                     */
+/* ************************************************* */
+WRITE(0xD000001C, 0x00000001);    // SyncEn
+wait(1); // IDLE 1                // 1 μs
+WRITE(0xD000001C, 0x00000003);    // SyncEn DisplayEn

@@ -1,0 +1,21 @@
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.txt.
+#
+
+mainmenu "Project Configuration"
+
+config DEF_CHIP_PKG_IT976
+    def_bool y
+
+config CMAKE_SOURCE_DIR
+    string
+    option env="CMAKE_SOURCE_DIR"
+
+config AXISPI_ENABLE
+    def_bool n
+
+config SPI_ENABLE
+    def_bool n
+
+source "$CMAKE_SOURCE_DIR/sdk/Kconfig"

@@ -1,0 +1,359 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 02 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, big endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           SMARISC
+  Version:                           0x1
+  Entry point address:               0x100
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          319492 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         22
+  Section header string table index: 19
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .reset            PROGBITS        00000000 002000 000e60 00  AX  0   0  1
+  [ 2] .risc1_header     PROGBITS        00001000 003000 000018 00  WA  0   0  4
+  [ 3] .text             PROGBITS        00001100 003100 013b44 00  AX  0   0 256
+  [ 4] .eh_frame         PROGBITS        00014c44 016c44 000704 00   A  0   0  4
+  [ 5] .data             PROGBITS        00015348 017348 005a40 00  WA  0   0  4
+  [ 6] .bss              NOBITS          0001ad88 01cd88 01d640 00  WA  0   0 16
+  [ 7] .stack            NOBITS          000383c8 01cd88 014000 00  WA  0   0  1
+  [ 8] .comment          PROGBITS        00000000 01cd88 00002c 01  MS  0   0  1
+  [ 9] .stab             PROGBITS        00000000 01cdb4 01b8ac 0c     10   0  4
+  [10] .stabstr          STRTAB          00000000 038660 006d53 00      0   0  1
+  [11] .debug_info       PROGBITS        00000000 03f3b3 003fa5 00      0   0  1
+  [12] .debug_abbrev     PROGBITS        00000000 043358 001131 00      0   0  1
+  [13] .debug_loc        PROGBITS        00000000 044489 004f83 00      0   0  1
+  [14] .debug_aranges    PROGBITS        00000000 04940c 0001d8 00      0   0  1
+  [15] .debug_ranges     PROGBITS        00000000 0495e4 000798 00      0   0  1
+  [16] .debug_line       PROGBITS        00000000 049d7c 00115f 00      0   0  1
+  [17] .debug_str        PROGBITS        00000000 04aedb 000ff3 01  MS  0   0  1
+  [18] .debug_frame      PROGBITS        00000000 04bed0 00025c 00      0   0  4
+  [19] .shstrtab         STRTAB          00000000 04df31 0000d0 00      0   0  1
+  [20] .symtab           SYMTAB          00000000 04c12c 0011e0 10     21 117  4
+  [21] .strtab           STRTAB          00000000 04d30c 000c25 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x002000 0x00000000 0x00000000 0x00e60 0x00e60 R E 0x2000
+  LOAD           0x003000 0x00001000 0x00001000 0x19d88 0x4b3c8 RWE 0x2000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .reset 
+   01     .risc1_header .text .eh_frame .data .bss .stack 
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+The decoding of unwind sections for machine type SMARISC is not currently supported.
+
+Symbol table '.symtab' contains 286 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 SECTION LOCAL  DEFAULT    1 
+     2: 00001000     0 SECTION LOCAL  DEFAULT    2 
+     3: 00001100     0 SECTION LOCAL  DEFAULT    3 
+     4: 00014c44     0 SECTION LOCAL  DEFAULT    4 
+     5: 00015348     0 SECTION LOCAL  DEFAULT    5 
+     6: 0001ad88     0 SECTION LOCAL  DEFAULT    6 
+     7: 000383c8     0 SECTION LOCAL  DEFAULT    7 
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 SECTION LOCAL  DEFAULT   10 
+    11: 00000000     0 SECTION LOCAL  DEFAULT   11 
+    12: 00000000     0 SECTION LOCAL  DEFAULT   12 
+    13: 00000000     0 SECTION LOCAL  DEFAULT   13 
+    14: 00000000     0 SECTION LOCAL  DEFAULT   14 
+    15: 00000000     0 SECTION LOCAL  DEFAULT   15 
+    16: 00000000     0 SECTION LOCAL  DEFAULT   16 
+    17: 00000000     0 SECTION LOCAL  DEFAULT   17 
+    18: 00000000     0 SECTION LOCAL  DEFAULT   18 
+    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS C:/workspace/IT970_Series
+    20: 00000e44     0 NOTYPE  LOCAL  DEFAULT    1 .proc0
+    21: 00000000     0 FILE    LOCAL  DEFAULT  ABS codec_crt0.c
+    22: 00000000     0 FILE    LOCAL  DEFAULT  ABS ticktimer.c
+    23: 0001ad68     4 OBJECT  LOCAL  DEFAULT    5 bEnableAudioProcessor
+    24: 0001ad88     8 OBJECT  LOCAL  DEFAULT    6 ticks
+    25: 0001ad90     4 OBJECT  LOCAL  DEFAULT    6 clkCpu
+    26: 0001ad94     4 OBJECT  LOCAL  DEFAULT    6 clkMem
+    27: 0001ad98     4 OBJECT  LOCAL  DEFAULT    6 clkBus
+    28: 0001ad9c     2 OBJECT  LOCAL  DEFAULT    6 clkMem2Val
+    29: 0001ad9e     2 OBJECT  LOCAL  DEFAULT    6 clkAhb2Val
+    30: 0001ada0     2 OBJECT  LOCAL  DEFAULT    6 clkApb2Val
+    31: 0001ada2     2 OBJECT  LOCAL  DEFAULT    6 clkApb3Val
+    32: 0001ada4     2 OBJECT  LOCAL  DEFAULT    6 clkIsp1Val
+    33: 0001ada8   100 OBJECT  LOCAL  DEFAULT    6 clkGenRegs
+    34: 0001ae0c    52 OBJECT  LOCAL  DEFAULT    6 clkPllRegs
+    35: 0000140c    56 FUNC    LOCAL  DEFAULT    3 ithReadRegH
+    36: 00001a1c   744 FUNC    LOCAL  DEFAULT    3 GetPllFreq
+    37: 00001d04   132 FUNC    LOCAL  DEFAULT    3 GetPllFreqOut1
+    38: 00001d88   140 FUNC    LOCAL  DEFAULT    3 GetPllFreqOut2
+    39: 00000000     0 FILE    LOCAL  DEFAULT  ABS bit.c
+    40: 00000000     0 FILE    LOCAL  DEFAULT  ABS drc.c
+    41: 00000000     0 FILE    LOCAL  DEFAULT  ABS hufftabs.c
+    42: 00000000     0 FILE    LOCAL  DEFAULT  ABS mp3dec.c
+    43: 00000000     0 FILE    LOCAL  DEFAULT  ABS scalfact.c
+    44: 00017684    72 OBJECT  LOCAL  DEFAULT    5 NRTab
+    45: 000176cc    32 OBJECT  LOCAL  DEFAULT    5 SFLenTab
+    46: 00000000     0 FILE    LOCAL  DEFAULT  ABS equalizer.c
+    47: 00000000     0 FILE    LOCAL  DEFAULT  ABS imdct.c
+    48: 00017c08    72 OBJECT  LOCAL  DEFAULT    5 freqinv_a
+    49: 00017aa0   360 OBJECT  LOCAL  DEFAULT    5 costab36_0
+    50: 00017980   288 OBJECT  LOCAL  DEFAULT    5 costab36_1
+    51: 00017818   360 OBJECT  LOCAL  DEFAULT    5 costab36_2
+    52: 000176f8   288 OBJECT  LOCAL  DEFAULT    5 costab36_3
+    53: 00000000     0 FILE    LOCAL  DEFAULT  ABS mp3decode.c
+    54: 0001e440 16382 OBJECT  LOCAL  DEFAULT    6 inbuf
+    55: 0001c040  9216 OBJECT  LOCAL  DEFAULT    6 sampbuf
+    56: 0001ae40  4608 OBJECT  LOCAL  DEFAULT    6 pcmbuf
+    57: 00000000     0 FILE    LOCAL  DEFAULT  ABS stproc.c
+    58: 00000000     0 FILE    LOCAL  DEFAULT  ABS dist10.c
+    59: 00018d24  4096 OBJECT  LOCAL  DEFAULT    5 D
+    60: 00017ce4    64 OBJECT  LOCAL  DEFAULT    5 sbi_vindex
+    61: 00017d24  4096 OBJECT  LOCAL  DEFAULT    5 dctii_32_costab
+    62: 00000000     0 FILE    LOCAL  DEFAULT  ABS freqinfo.c
+    63: 00022440  4608 OBJECT  LOCAL  DEFAULT    6 dct.3578
+    64: 00019e24    84 OBJECT  LOCAL  DEFAULT    5 tab
+    65: 00019d24   256 OBJECT  LOCAL  DEFAULT    5 scale
+    66: 00000000     0 FILE    LOCAL  DEFAULT  ABS io.c
+    67: 0000c984    60 FUNC    LOCAL  DEFAULT    3 getStreamWrPtr.part.0
+    68: 00025d84     4 OBJECT  LOCAL  DEFAULT    6 streamRdPtr
+    69: 00025d5c     4 OBJECT  LOCAL  DEFAULT    6 gCh
+    70: 00025d58     4 OBJECT  LOCAL  DEFAULT    6 gSampleRate
+    71: 00025d60     4 OBJECT  LOCAL  DEFAULT    6 gnTemp
+    72: 0001ad70    16 OBJECT  LOCAL  DEFAULT    5 tDumpWave
+    73: 00025d68     4 OBJECT  LOCAL  DEFAULT    6 pcmWriteIdx
+    74: 00025d80     4 OBJECT  LOCAL  DEFAULT    6 streamCurPos
+    75: 0001ad80     4 OBJECT  LOCAL  DEFAULT    5 gLastPtsOverFlowSection
+    76: 00025d6c     4 OBJECT  LOCAL  DEFAULT    6 mp3FrameAccu
+    77: 00025d70     4 OBJECT  LOCAL  DEFAULT    6 mp3FrameStep
+    78: 00025d78     4 OBJECT  LOCAL  DEFAULT    6 decTime
+    79: 00025d64     4 OBJECT  LOCAL  DEFAULT    6 last_rdptr
+    80: 00025d7c     4 OBJECT  LOCAL  DEFAULT    6 bInitDAC
+    81: 00025d74     4 OBJECT  LOCAL  DEFAULT    6 gInitOutput
+    82: 00023648 10000 OBJECT  LOCAL  DEFAULT    6 tUpSample
+    83: 00000000     0 FILE    LOCAL  DEFAULT  ABS mp3tabs.c
+    84: 00000000     0 FILE    LOCAL  DEFAULT  ABS trigtabs.c
+    85: 00000000     0 FILE    LOCAL  DEFAULT  ABS dqchan.c
+    86: 0001a814    16 OBJECT  LOCAL  DEFAULT    5 pow14
+    87: 0001a714   256 OBJECT  LOCAL  DEFAULT    5 pow43_14
+    88: 0001a654   192 OBJECT  LOCAL  DEFAULT    5 pow43
+    89: 0001a614    32 OBJECT  LOCAL  DEFAULT    5 pow2frac
+    90: 0001a634    32 OBJECT  LOCAL  DEFAULT    5 pow2exp
+    91: 0001a824    22 OBJECT  LOCAL  DEFAULT    5 preTab
+    92: 00000000     0 FILE    LOCAL  DEFAULT  ABS huffman.c
+    93: 00000000     0 FILE    LOCAL  DEFAULT  ABS layer12.c
+    94: 0001aa38    56 OBJECT  LOCAL  DEFAULT    5 linear_table
+    95: 0001aa70   256 OBJECT  LOCAL  DEFAULT    5 sf_table
+    96: 0001a984   180 OBJECT  LOCAL  DEFAULT    5 sbquant_table
+    97: 0001a964    32 OBJECT  LOCAL  DEFAULT    5 bitalloc_table
+    98: 0001a908    90 OBJECT  LOCAL  DEFAULT    5 offset_table
+    99: 0001a83c   204 OBJECT  LOCAL  DEFAULT    5 qc_table
+   100: 00000000     0 FILE    LOCAL  DEFAULT  ABS reverb.c
+   101: 00000000     0 FILE    LOCAL  DEFAULT  ABS voiceoff.c
+   102: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+   103: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+   104: 00000000     0 FILE    LOCAL  DEFAULT  ABS mulsf3.c
+   105: 00000000     0 FILE    LOCAL  DEFAULT  ABS fixunssfsi.c
+   106: 00000000     0 FILE    LOCAL  DEFAULT  ABS floatunsisf.c
+   107: 00000000     0 FILE    LOCAL  DEFAULT  ABS divdf3.c
+   108: 00000000     0 FILE    LOCAL  DEFAULT  ABS muldf3.c
+   109: 00000000     0 FILE    LOCAL  DEFAULT  ABS fixunsdfsi.c
+   110: 00000000     0 FILE    LOCAL  DEFAULT  ABS floatunsidf.c
+   111: 00000000     0 FILE    LOCAL  DEFAULT  ABS extendsfdf2.c
+   112: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+   113: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+   114: 00000000     0 FILE    LOCAL  DEFAULT  ABS memcpy.c
+   115: 00000000     0 FILE    LOCAL  DEFAULT  ABS memmove.c
+   116: 00000000     0 FILE    LOCAL  DEFAULT  ABS memset.c
+   117: 0002d734    20 OBJECT  GLOBAL DEFAULT    6 freqinfo
+   118: 000013cc    32 FUNC    GLOBAL DEFAULT    3 __main
+   119: 0000dcd4  1372 FUNC    GLOBAL DEFAULT    3 UpSampling
+   120: 00000198     0 NOTYPE  GLOBAL DEFAULT    1 __exit_halt
+   121: 00015350     0 NOTYPE  GLOBAL DEFAULT    5 ___DTOR_LIST__
+   122: 0001ad64     4 OBJECT  GLOBAL DEFAULT    5 ci
+   123: 00001300    56 FUNC    GLOBAL DEFAULT    3 MMIO_Write
+   124: 00001fd0    64 FUNC    GLOBAL DEFAULT    3 mad_bit_length
+   125: 0000f238   132 FUNC    GLOBAL DEFAULT    3 ResetRdBufferPointer
+   126: 00000e08     8 FUNC    GLOBAL DEFAULT    1 _trap
+   127: 00000a08     8 FUNC    GLOBAL DEFAULT    1 _itlb_miss
+   128: 00014938   420 FUNC    GLOBAL DEFAULT    3 memmove
+   129: 00025d88 31112 OBJECT  GLOBAL DEFAULT    6 mp3DecInfo
+   130: 00000c08     8 FUNC    GLOBAL DEFAULT    1 _sys_call
+   131: 0000a7dc  3036 FUNC    GLOBAL DEFAULT    3 synthesis
+   132: 00000808     0 NOTYPE  GLOBAL DEFAULT    1 __int_halt
+   133: 000122bc     0 NOTYPE  GLOBAL HIDDEN     3 __udivsi3_internal
+   134: 00000308     8 FUNC    GLOBAL DEFAULT    1 _data_page_fault
+   135: 000079f8  1280 FUNC    GLOBAL DEFAULT    3 AntiAliasGrCh
+   136: 00017c70    32 OBJECT  GLOBAL DEFAULT    5 cs
+   137: 00015388     8 OBJECT  GLOBAL DEFAULT    5 quadTabOffset
+   138: 00000708     8 FUNC    GLOBAL DEFAULT    1 _illegal_inst
+   139: 00000b08     8 FUNC    GLOBAL DEFAULT    1 _range
+   140: 00000408     0 NOTYPE  GLOBAL DEFAULT    1 __inst_page_fault_halt
+   141: 00001100     0 NOTYPE  GLOBAL DEFAULT    3 __text_start
+   142: 00000e10     0 NOTYPE  GLOBAL DEFAULT    1 _start_proc
+   143: 0001a4dc   256 OBJECT  GLOBAL DEFAULT    5 ISFMpeg2
+   144: 00000a08     0 NOTYPE  GLOBAL DEFAULT    1 __itlb_miss_halt
+   145: 0000f44c   828 FUNC    GLOBAL DEFAULT    3 DequantBlock
+   146: 00001444   244 FUNC    GLOBAL DEFAULT    3 get_wiegand_timer
+   147: 000147dc   348 FUNC    GLOBAL DEFAULT    3 memcpy
+   148: 00001018     0 NOTYPE  GLOBAL DEFAULT    2 _risc1_stack
+   149: 0000dafc   472 FUNC    GLOBAL DEFAULT    3 streamRead
+   150: 0001a4cc    16 OBJECT  GLOBAL DEFAULT    5 ISFIIP
+   151: 00015358     0 NOTYPE  GLOBAL DEFAULT    5 __DTOR_END__
+   152: 000011e4   148 FUNC    GLOBAL DEFAULT    3 dc_enable
+   153: 000122bc   252 FUNC    GLOBAL HIDDEN     3 __udivsi3
+   154: 000018c0   176 FUNC    GLOBAL DEFAULT    3 UART_TIMER_START
+   155: 000085f4  3516 FUNC    GLOBAL DEFAULT    3 HybridTransformGrCh
+   156: 000153e0   256 OBJECT  GLOBAL DEFAULT    5 huffTabLookup
+   157: 00000508     8 FUNC    GLOBAL DEFAULT    1 _tick_timer
+   158: 00023640     4 OBJECT  GLOBAL DEFAULT    6 gPrint
+   159: 0001ad88     0 NOTYPE  GLOBAL DEFAULT    6 _bss_start
+   160: 000144ac   160 FUNC    GLOBAL HIDDEN     3 __fixunsdfsi
+   161: 00001100   184 FUNC    GLOBAL DEFAULT    3 ic_enable
+   162: 00000908     8 FUNC    GLOBAL DEFAULT    1 _dtlb_miss
+   163: 00000608     0 NOTYPE  GLOBAL DEFAULT    1 __alignment_halt
+   164: 0001a5dc    56 OBJECT  GLOBAL DEFAULT    5 ISFMpeg1
+   165: 00000808     8 FUNC    GLOBAL DEFAULT    1 _int
+   166: 0000c6e4   672 FUNC    GLOBAL DEFAULT    3 updateFreqInfo
+   167: 00001338    44 FUNC    GLOBAL DEFAULT    3 MMIO_Read
+   168: 0002d710     4 OBJECT  GLOBAL DEFAULT    6 nFillSize
+   169: 0000d468   772 FUNC    GLOBAL DEFAULT    3 AudioPluginAPI
+   170: 00000c08     0 NOTYPE  GLOBAL DEFAULT    1 __sys_call_halt
+   171: 0000e230   312 FUNC    GLOBAL DEFAULT    3 GetUpSampleRate
+   172: 000019c8    84 FUNC    GLOBAL DEFAULT    3 UART_DELAY
+   173: 0001460c   328 FUNC    GLOBAL HIDDEN     3 __extendsfdf2
+   174: 0004c3c8     0 NOTYPE  GLOBAL DEFAULT    7 risc1_end_addr
+   175: 00012434  1852 FUNC    GLOBAL HIDDEN     3 __udivdi3
+   176: 0001454c   192 FUNC    GLOBAL HIDDEN     3 __floatunsidf
+   177: 00015560  8484 OBJECT  GLOBAL DEFAULT    5 huffTable
+   178: 0000f1f4    68 FUNC    GLOBAL DEFAULT    3 GetTime
+   179: 000383c8     0 NOTYPE  GLOBAL DEFAULT    6 _bss_end
+   180: 000000d0     0 NOTYPE  GLOBAL DEFAULT    1 __dbgmsg_buf_len
+   181: 000011e4   148 FUNC    GLOBAL DEFAULT    3 dc_invalidate
+   182: 0004c3c8     0 NOTYPE  GLOBAL DEFAULT    7 _risc1_end_addr
+   183: 000383c8     0 NOTYPE  GLOBAL DEFAULT    7 __stack_start
+   184: 0001ad6c     4 OBJECT  GLOBAL DEFAULT    5 nDiffInfoCount
+   185: 00002114  1496 FUNC    GLOBAL DEFAULT    3 UnpackFrameHeader
+   186: 0001a258   270 OBJECT  GLOBAL DEFAULT    5 slotTab
+   187: 0001a4c4     8 OBJECT  GLOBAL DEFAULT    5 uniqueIDTab
+   188: 0000c9d8    24 FUNC    GLOBAL DEFAULT    3 init_inputBuf
+   189: 000154e0   128 OBJECT  GLOBAL DEFAULT    5 huffTabOffset
+   190: 0002d7b0 16384 OBJECT  GLOBAL DEFAULT    6 streamBuf
+   191: 00001538   220 FUNC    GLOBAL DEFAULT    3 reset_wiegand_timer
+   192: 00000308     0 NOTYPE  GLOBAL DEFAULT    1 __data_page_fault_halt
+   193: 000000d4     0 NOTYPE  GLOBAL DEFAULT    1 __dbgmsg_idx_ptr
+   194: 00015348     0 NOTYPE  GLOBAL DEFAULT    5 __CTOR_LIST__
+   195: 00014754   136 FUNC    GLOBAL HIDDEN     3 __clzsi2
+   196: 000047ac 12876 FUNC    GLOBAL DEFAULT    3 UnpackScaleFactors
+   197: 00007ef8  1788 FUNC    GLOBAL DEFAULT    3 IMDCT12x3
+   198: 00000100     0 NOTYPE  GLOBAL DEFAULT  ABS _start
+   199: 00001364   104 FUNC    GLOBAL DEFAULT    3 codec_start
+   200: 0004c3c8     0 NOTYPE  GLOBAL DEFAULT    7 __end
+   201: 00001000     0 NOTYPE  GLOBAL DEFAULT    2 _risc1_start_addr
+   202: 00000408     8 FUNC    GLOBAL DEFAULT    1 _inst_page_fault
+   203: 0000c9f0   236 FUNC    GLOBAL DEFAULT    3 streamHasNBytes
+   204: 00015348     0 NOTYPE  GLOBAL DEFAULT    5 ___CTOR_LIST__
+   205: 00001614   684 FUNC    GLOBAL DEFAULT    3 start_wiegand_timer
+   206: 00000708     0 NOTYPE  GLOBAL DEFAULT    1 __illegal_inst_halt
+   207: 000131bc  2856 FUNC    GLOBAL HIDDEN     3 __divdf3
+   208: 0004c3c8     0 NOTYPE  GLOBAL DEFAULT    7 __stack_end
+   209: 0000cb4c   824 FUNC    GLOBAL DEFAULT    3 output_field
+   210: 000011b8    44 FUNC    GLOBAL DEFAULT    3 ic_disable
+   211: 00014c44     0 NOTYPE  GLOBAL DEFAULT    3 __text_end
+   212: 000000cc     0 NOTYPE  GLOBAL DEFAULT    1 __dbgmsg_buf_ptr
+   213: 00013ce4  1992 FUNC    GLOBAL HIDDEN     3 __muldf3
+   214: 0001ad30    49 OBJECT  GLOBAL DEFAULT    5 __tm_info
+   215: 00019fbc   666 OBJECT  GLOBAL DEFAULT    5 sfBandTable
+   216: 0001ad88     0 NOTYPE  GLOBAL DEFAULT    6 __bss_start
+   217: 00014adc   360 FUNC    GLOBAL DEFAULT    3 memset
+   218: 000093b0  2444 FUNC    GLOBAL DEFAULT    3 main
+   219: 0000d76c   272 FUNC    GLOBAL DEFAULT    3 streamCompareSyncword
+   220: 00000e08     0 NOTYPE  GLOBAL DEFAULT    1 __trap_halt
+   221: 0000d40c    92 FUNC    GLOBAL DEFAULT    3 ithMp3Printf
+   222: 0001a37c    18 OBJECT  GLOBAL DEFAULT    5 samplesPerFrameTab
+   223: 0000d87c   640 FUNC    GLOBAL DEFAULT    3 streamSeekSyncword
+   224: 00001e14   400 FUNC    GLOBAL DEFAULT    3 PalGetSysClock
+   225: 00001fa4    44 FUNC    GLOBAL DEFAULT    3 mad_bit_init
+   226: 00015350     0 NOTYPE  GLOBAL DEFAULT    5 __CTOR_END__
+   227: 00012b70  1156 FUNC    GLOBAL HIDDEN     3 __mulsf3
+   228: 0000ce84  1416 FUNC    GLOBAL DEFAULT    3 ithGMp3Printf
+   229: 00015350     0 NOTYPE  GLOBAL DEFAULT    5 __DTOR_LIST__
+   230: 0007d000     0 NOTYPE  GLOBAL DEFAULT    2 risc2_start_addr
+   231: 00001000    24 OBJECT  GLOBAL DEFAULT    2 __header
+   232: 00015390    80 OBJECT  GLOBAL DEFAULT    5 quadTable
+   233: 00001000     0 NOTYPE  GLOBAL DEFAULT    2 risc1_start_addr
+   234: 000317b0     4 OBJECT  GLOBAL DEFAULT    6 gtAudioPluginBuffer
+   235: 0001ac30   256 OBJECT  GLOBAL HIDDEN     5 __clz_tab
+   236: 0001a368    12 OBJECT  GLOBAL DEFAULT    5 sideBytesTab
+   237: 00023644     4 OBJECT  GLOBAL DEFAULT    6 gPause
+   238: 00000908     0 NOTYPE  GLOBAL DEFAULT    1 __dtlb_miss_halt
+   239: 000317c0 27648 OBJECT  GLOBAL DEFAULT    6 pcmWriteBuf
+   240: 0000ffc0  3384 FUNC    GLOBAL DEFAULT    3 DecodeHuffman
+   241: 00000208     8 FUNC    GLOBAL DEFAULT    1 _bus_error
+   242: 00015380     8 OBJECT  GLOBAL DEFAULT    5 quadTabMaxBits
+   243: 0002d714     4 OBJECT  GLOBAL DEFAULT    6 nFrames
+   244: 0000f170   132 FUNC    GLOBAL DEFAULT    3 GetFrameNo
+   245: 00000100     0 NOTYPE  GLOBAL DEFAULT    1 _reset
+   246: 00017c50    32 OBJECT  GLOBAL DEFAULT    5 ca
+   247: 00000608     8 FUNC    GLOBAL DEFAULT    1 _alignment
+   248: 00001278    44 FUNC    GLOBAL DEFAULT    3 dc_disable
+   249: 000383c8     0 NOTYPE  GLOBAL DEFAULT    6 _end
+   250: 0001ad88     0 NOTYPE  GLOBAL DEFAULT    6 risc1_bss_start
+   251: 000026ec  8384 FUNC    GLOBAL DEFAULT    3 MP3Decode
+   252: 0007d000     0 NOTYPE  GLOBAL DEFAULT    2 _risc2_start_addr
+   253: 0001a374     6 OBJECT  GLOBAL DEFAULT    5 bitsPerSlotTab
+   254: 00000208     0 NOTYPE  GLOBAL DEFAULT    1 __bus_error_halt
+   255: 0000b3b8  4908 FUNC    GLOBAL DEFAULT    3 SubbandTransformGr
+   256: 0002d748   100 OBJECT  GLOBAL DEFAULT    6 gSpectrum
+   257: 00000b08     0 NOTYPE  GLOBAL DEFAULT    1 __range_halt
+   258: 0000e8bc  2228 FUNC    GLOBAL DEFAULT    3 outputpcm
+   259: 00013084   312 FUNC    GLOBAL HIDDEN     3 __floatunsisf
+   260: 00000508     0 NOTYPE  GLOBAL DEFAULT    1 __tick_halt
+   261: 000383c8     0 NOTYPE  GLOBAL DEFAULT    6 risc1_bss_end
+   262: 00001100     0 FUNC    GLOBAL DEFAULT    3 ic_invalidate
+   263: 00012ff4   144 FUNC    GLOBAL HIDDEN     3 __fixunssfsi
+   264: 00000194    12 FUNC    GLOBAL DEFAULT    1 _exit
+   265: 000123b8   124 FUNC    GLOBAL HIDDEN     3 __muldi3
+   266: 0001a4a0    36 OBJECT  GLOBAL DEFAULT    5 samplerateTab
+   267: 00002010   260 FUNC    GLOBAL DEFAULT    3 mad_bit_read
+   268: 0004c3c8     0 NOTYPE  GLOBAL DEFAULT    7 _stack
+   269: 0001157c  3392 FUNC    GLOBAL DEFAULT    3 mad_layer_II
+   270: 000383c0     4 OBJECT  GLOBAL DEFAULT    6 gBuf
+   271: 0002d718    28 OBJECT  GLOBAL DEFAULT    6 mp3FrameInfo
+   272: 0007d000     0 NOTYPE  GLOBAL DEFAULT    2 _risc2_end_addr
+   273: 0001a390   270 OBJECT  GLOBAL DEFAULT    5 bitrateTab
+   274: 0000e368  1364 FUNC    GLOBAL DEFAULT    3 SetFrameNo
+   275: 00010cf8  2180 FUNC    GLOBAL DEFAULT    3 mad_layer_I
+   276: 0000f2bc   400 FUNC    GLOBAL DEFAULT    3 ClearRdBuffer
+   277: 0001ad84     4 OBJECT  GLOBAL DEFAULT    5 streamLen
+   278: 0007d000     0 NOTYPE  GLOBAL DEFAULT    2 risc2_end_addr
+   279: 0000cadc   112 FUNC    GLOBAL DEFAULT    3 output_and_count
+   280: 00009d3c  2720 FUNC    GLOBAL DEFAULT    3 ProcessStereoGr
+   281: 00001970    88 FUNC    GLOBAL DEFAULT    3 UART_TIMER_END
+   282: 0000f788  2104 FUNC    GLOBAL DEFAULT    3 DequantizeGr
+   283: 000383c4     4 OBJECT  GLOBAL DEFAULT    6 gtAudioPluginBufferLength
+   284: 0000c9c0    24 FUNC    GLOBAL DEFAULT    3 codec_info
+   285: 000013ec    32 FUNC    GLOBAL DEFAULT    3 free
+
+No version information found in this file.

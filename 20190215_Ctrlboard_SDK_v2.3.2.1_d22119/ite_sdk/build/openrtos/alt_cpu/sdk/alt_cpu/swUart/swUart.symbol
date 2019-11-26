@@ -1,0 +1,149 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 02 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, big endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           SMARISC
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          98168 (bytes into file)
+  Flags:                             0x1, no delay
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         1
+  Size of section headers:           40 (bytes)
+  Number of section headers:         21
+  Section header string table index: 18
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .reset            PROGBITS        00000000 002000 000064 00  AX  0   0  4
+  [ 2] .text             PROGBITS        00000064 002064 001c18 00  AX  0   0  4
+  [ 3] .eh_frame         PROGBITS        00001c7c 003c7c 00017c 00   A  0   0  4
+  [ 4] .data             PROGBITS        00001df8 003df8 00014c 00  WA  0   0  4
+  [ 5] .bss              NOBITS          00001f44 003f44 000424 00  WA  0   0  4
+  [ 6] .stack            NOBITS          00002370 003f44 000400 00  WA  0   0  1
+  [ 7] .stab             PROGBITS        00000000 003f44 003804 0c      9   0  4
+  [ 8] .comment          PROGBITS        00000000 007748 00002c 01  MS  0   0  1
+  [ 9] .stabstr          STRTAB          00000000 007774 00adcd 00      0   0  1
+  [10] .debug_info       PROGBITS        00000000 012541 001a52 00      0   0  1
+  [11] .debug_abbrev     PROGBITS        00000000 013f93 000730 00      0   0  1
+  [12] .debug_loc        PROGBITS        00000000 0146c3 00180f 00      0   0  1
+  [13] .debug_aranges    PROGBITS        00000000 015ed2 0000d8 00      0   0  1
+  [14] .debug_ranges     PROGBITS        00000000 015faa 0002b8 00      0   0  1
+  [15] .debug_line       PROGBITS        00000000 016262 0007b5 00      0   0  1
+  [16] .debug_str        PROGBITS        00000000 016a17 000c06 01  MS  0   0  1
+  [17] .debug_frame      PROGBITS        00000000 017620 000110 00      0   0  4
+  [18] .shstrtab         STRTAB          00000000 017eb6 0000c2 00      0   0  1
+  [19] .symtab           SYMTAB          00000000 017730 0004f0 10     20  50  4
+  [20] .strtab           STRTAB          00000000 017c20 000296 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x002000 0x00000000 0x00000000 0x01f44 0x02770 RWE 0x2000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .reset .text .eh_frame .data .bss .stack 
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+The decoding of unwind sections for machine type SMARISC is not currently supported.
+
+Symbol table '.symtab' contains 79 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 SECTION LOCAL  DEFAULT    1 
+     2: 00000064     0 SECTION LOCAL  DEFAULT    2 
+     3: 00001c7c     0 SECTION LOCAL  DEFAULT    3 
+     4: 00001df8     0 SECTION LOCAL  DEFAULT    4 
+     5: 00001f44     0 SECTION LOCAL  DEFAULT    5 
+     6: 00002370     0 SECTION LOCAL  DEFAULT    6 
+     7: 00000000     0 SECTION LOCAL  DEFAULT    7 
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 SECTION LOCAL  DEFAULT   10 
+    11: 00000000     0 SECTION LOCAL  DEFAULT   11 
+    12: 00000000     0 SECTION LOCAL  DEFAULT   12 
+    13: 00000000     0 SECTION LOCAL  DEFAULT   13 
+    14: 00000000     0 SECTION LOCAL  DEFAULT   14 
+    15: 00000000     0 SECTION LOCAL  DEFAULT   15 
+    16: 00000000     0 SECTION LOCAL  DEFAULT   16 
+    17: 00000000     0 SECTION LOCAL  DEFAULT   17 
+    18: 00000000     0 FILE    LOCAL  DEFAULT  ABS alt_cpu_crt0.c
+    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS ticktimer.c
+    20: 00001f4c     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick2
+    21: 00001f44     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick2Offset
+    22: 00001f50     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick1
+    23: 00001f48     4 OBJECT  LOCAL  DEFAULT    5 gPrevTick1Offset
+    24: 00000000     0 FILE    LOCAL  DEFAULT  ABS gpio.c
+    25: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
+    26: 00002364     4 OBJECT  LOCAL  DEFAULT    5 gTickPerbit
+    27: 00002360     4 OBJECT  LOCAL  DEFAULT    5 gTxGpio
+    28: 0000215c     1 OBJECT  LOCAL  DEFAULT    5 gTxInit
+    29: 00002160     4 OBJECT  LOCAL  DEFAULT    5 gTxWriteLen
+    30: 00002164   500 OBJECT  LOCAL  DEFAULT    5 gWriteData
+    31: 00002358     4 OBJECT  LOCAL  DEFAULT    5 gParity
+    32: 00001f5e     1 OBJECT  LOCAL  DEFAULT    5 gRxInit
+    33: 0000235c     4 OBJECT  LOCAL  DEFAULT    5 gRxGpio
+    34: 00001f5d     1 OBJECT  LOCAL  DEFAULT    5 CurReadBit.6174
+    35: 00001f5c     1 OBJECT  LOCAL  DEFAULT    5 PreReadBit.6175
+    36: 00001df8     1 OBJECT  LOCAL  DEFAULT    4 NewByteFlag.6176
+    37: 00001f58     4 OBJECT  LOCAL  DEFAULT    5 nextReadTime.6173
+    38: 00001f54     1 OBJECT  LOCAL  DEFAULT    5 BitIdx.6172
+    39: 00001f55     1 OBJECT  LOCAL  DEFAULT    5 ReadByte.6171
+    40: 00001f64     4 OBJECT  LOCAL  DEFAULT    5 gRxWriteIdx
+    41: 00001f68   500 OBJECT  LOCAL  DEFAULT    5 gReadData
+    42: 00001f60     4 OBJECT  LOCAL  DEFAULT    5 gRxReadIdx
+    43: 00000000     0 FILE    LOCAL  DEFAULT  ABS muldf3.c
+    44: 00000000     0 FILE    LOCAL  DEFAULT  ABS fixunsdfsi.c
+    45: 00000000     0 FILE    LOCAL  DEFAULT  ABS floatunsidf.c
+    46: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+    47: 00000000     0 FILE    LOCAL  DEFAULT  ABS libgcc2.c
+    48: 00000000     0 FILE    LOCAL  DEFAULT  ABS memcpy.c
+    49: 00000000     0 FILE    LOCAL  DEFAULT  ABS memset.c
+    50: 000001c8   180 FUNC    GLOBAL DEFAULT    2 startTimer
+    51: 0000048c   104 FUNC    GLOBAL DEFAULT    2 getGpioValue
+    52: 00000da4     0 NOTYPE  GLOBAL HIDDEN     2 __udivsi3_internal
+    53: 00000000   100 FUNC    GLOBAL DEFAULT    1 reset
+    54: 000019c8   344 FUNC    GLOBAL DEFAULT    2 memcpy
+    55: 00000da4   244 FUNC    GLOBAL HIDDEN     2 __udivsi3
+    56: 00001f44     0 NOTYPE  GLOBAL DEFAULT    5 _bss_start
+    57: 000017b4   156 FUNC    GLOBAL HIDDEN     2 __fixunsdfsi
+    58: 00001f44     0 NOTYPE  GLOBAL DEFAULT    4 _dst_end
+    59: 00001850   188 FUNC    GLOBAL HIDDEN     2 __floatunsidf
+    60: 00000118    56 FUNC    GLOBAL DEFAULT    2 getTimer
+    61: 00002368     0 NOTYPE  GLOBAL DEFAULT    5 _bss_end
+    62: 0000034c   100 FUNC    GLOBAL DEFAULT    2 getDurationInUs
+    63: 00001944   132 FUNC    GLOBAL HIDDEN     2 __clzsi2
+    64: 0000027c   208 FUNC    GLOBAL DEFAULT    2 getDuration
+    65: 00002770     0 NOTYPE  GLOBAL DEFAULT    6 __end
+    66: 000003b0   116 FUNC    GLOBAL DEFAULT    2 setGpioDir
+    67: 0000190c    56 FUNC    GLOBAL HIDDEN     2 __mulsi3
+    68: 00000e98  2332 FUNC    GLOBAL HIDDEN     2 __muldf3
+    69: 00001b20   348 FUNC    GLOBAL DEFAULT    2 memset
+    70: 00000064     0 NOTYPE  GLOBAL DEFAULT    2 _dst_beg
+    71: 00000560  2116 FUNC    GLOBAL DEFAULT    2 main
+    72: 00000064   180 FUNC    GLOBAL DEFAULT    2 getCurTimer
+    73: 0000018c    60 FUNC    GLOBAL DEFAULT    2 stopTimer
+    74: 00000424   104 FUNC    GLOBAL DEFAULT    2 setGpioMode
+    75: 00001e44   256 OBJECT  GLOBAL HIDDEN     4 __clz_tab
+    76: 00000150    60 FUNC    GLOBAL DEFAULT    2 resetTimer
+    77: 000004f4   108 FUNC    GLOBAL DEFAULT    2 setGpioValue
+    78: 00002770     0 NOTYPE  GLOBAL DEFAULT    6 _stack
+
+No version information found in this file.

@@ -1,0 +1,23 @@
+//INPUT VD pin define
+//Y
+24, 25, 26, 27, 28, 29, 30, 31, 0, 0, 0, 0,
+//U
+16, 17, 18, 19, 20, 21, 22, 23, 0, 0, 0, 0,
+//V
+8,  9, 10, 11, 12, 13, 14, 15, 0, 0, 0, 0,
+//Hsync,Vsync, DE, pixel clk
+5, 6, 7, 4,
+//UCLKsrc, UCLKinv, UCLKDly, UCLKRatio, EnUCLK
+1, 0, 15, 0, 1,
+//CAPIOFFEN0_31, CAPIOFFEN32_35
+4294967264, 0,
+//colorformat, colororder, inputDataWidth
+2, 0, 1,
+//EnDEMode, EnInBT656, EnHSync, EnAutoDetHSPol, EnAutoDetVSPol
+1, 0, 1, 1, 1, 
+//interleave ,WrMergeThresld, CheckDE, CheckHS, CheckVS
+0, 18, 1, 1, 1,
+//skippattern , skipPeriod
+15, 3,
+//UCLKAutoDlyDir,UCLKAutoDlyEn
+0, 1,

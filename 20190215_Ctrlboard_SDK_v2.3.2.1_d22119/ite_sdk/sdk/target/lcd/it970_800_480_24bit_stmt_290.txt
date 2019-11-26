@@ -1,0 +1,441 @@
+/*
+ * MIPI LCD Initialization Script
+ *
+ * Date          : 2019/11/13
+ * Chip Type     : IT970
+ * Resolution    : 480x800
+ * Color format  : RGB565
+ * LCD interface : 24-bits
+ * Build version : LCD initial script editor Ver. 0.0.0.290
+ * SHA1 hash     : 1de50c411f59385bc11f935bdc21dd6bb971a77f
+ * 
+ */
+
+/* ************************************************* */
+/*               Please don't remove!                */
+/* ************************************************* */
+/*@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@*/
+
+/* ************************************************* */
+/*     IT970, MIPI Interface mode, Clock Setting     */
+/* ************************************************* */
+// LP
+WRITE(0xD8000048, 0x0002C804);    // KESCCLK
+// HS
+WRITE(0xD8000028, 0x002AC802);    // DCLK
+WRITE(0xD800004C, 0xC002C802);    // KDSICLK
+WRITE(0xD8000044, 0xC00AC881);    // KCLK
+
+/* ************************************************* */
+/*              PLL3 ck3_n1, 0xD8000000              */
+/* ************************************************* */
+WRITE(0xD8000120, 0x203A0E01);
+WRITE(0xD8000124, 0x80000000);
+WRITE(0xD8000124, 0xF3000000);
+wait(220);                        // IDLE 220
+WRITE(0xD8000124, 0x80000000);
+
+// IO output mode
+WRITE(0xD0000110, 0x0000000F);    // (0x0000000F DEFAULT VALUE)
+
+/* ************************************************* */
+/*     LCD Setting (CPUIF FOR DBI), 0xd000_0000      */
+/* ************************************************* */
+WRITE(0xD0000004, 0x0F7F0410);    // CPUIF
+
+/* ************************************************* */
+/*             Port Setting 0xD000_0000              */
+/*    HS:16, HBP:32, HFP:32, VS:8, VBP:16, VFP:16    */
+/* ************************************************* */
+// MIPI enable
+WRITE(0xD0000230, 0x00000016);    // [0]:MIPI enable,[1]:HsyncValue,[2]:VsyncValue,[3]:DEValue
+wait(10);                         // 10 μs
+WRITE(0xD0000230, 0x00000017);    // [0]:MIPI enable
+wait(5);                          // 5 μs
+
+/* ************************************************* */
+/*                       MIPI                        */
+/* ************************************************* */
+WRITE(0xD800004C, 0x0002C002);    // MIPI controller normal
+wait(1);
+WRITE(0xD8000048, 0x8002C004);    // DPHY Enable
+wait(100);
+WRITE(0xD8000044, 0x400AC081);    // DPHY PORn rst normal
+wait(75);
+WRITE(0xD8000044, 0x000AC081);    // DPHY ResetN rst normal
+wait(200);
+
+/* ************************************************* */
+/*          MIPI DPHY reg base: 0xDC100000           */
+/* ************************************************* */
+WRITE(0xDC100034, 0x00218464);    // lane swap default
+WRITE(0xDC10001C, 0x540F5D80);    // pll frange[1:0]
+WRITE(0xDC100020, 0x01408064);    // pll frange[2]
+WRITE(0xDC10002C, 0x48040100);    // 
+wait(150);
+
+/* ************************************************* */
+/*          MIPI reg base: 0xd0c00000 (LP)           */
+/* ************************************************* */
+// ----------LP----------- //
+WRITE(0xD0C00004, 0x004F028F);    // $6[7]=BLLP, +$04[0]=EOTPGE
+WRITE(0xD0C00010, 0x000F0000);
+WRITE(0xD0C00014, 0x0000001B);
+wait(10);
+wait(150);
+// -------MIPI End-------- //
+wait(200000);
+
+/* ************************************************* */
+/*                   CPUIF Setting                   */
+/* ************************************************* */
+WRITE(0xD00000F4, 0x50413232);    // CSN,DCN,WRN,RDN
+WRITE(0xD00000F8, 0x00000000);    // 8bit cmd, no sync data
+
+/* ************************************************* */
+/*                MIPI Panel initial                 */
+/* ************************************************* */
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(10000);                        // delay 10000μs
+
+WRITE(0xD0000230, 0x10050017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A011);    // cmd 0x11
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(120000);                        // delay 120000μs
+
+WRITE(0xD0000230, 0x10390017);    // ct=39
+wait(1);
+WRITE(0xD00000F0, 0x0002A0B9);    // cmd 0xB9
+wait(1);
+WRITE(0xD00000F0, 0x0002B0FF);    // data 0xFF
+wait(1);
+WRITE(0xD00000F0, 0x0002B083);    // data 0x83
+wait(1);
+WRITE(0xD00000F0, 0x0002B063);    // data 0x63
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10390017);    // ct=39
+wait(1);
+WRITE(0xD00000F0, 0x0002A0BA);    // cmd 0xBA
+wait(1);
+WRITE(0xD00000F0, 0x0002B080);    // data 0x80
+wait(1);
+WRITE(0xD00000F0, 0x0002B000);    // data 0x00
+wait(1);
+WRITE(0xD00000F0, 0x0002B010);    // data 0x10
+wait(1);
+WRITE(0xD00000F0, 0x0002B008);    // data 0x08
+wait(1);
+WRITE(0xD00000F0, 0x0002B008);    // data 0x08
+wait(1);
+WRITE(0xD00000F0, 0x0002B010);    // data 0x10
+wait(1);
+WRITE(0xD00000F0, 0x0002B07E);    // data 0x7E
+wait(1);
+WRITE(0xD00000F0, 0x0002B06E);    // data 0x6E
+wait(1);
+WRITE(0xD00000F0, 0x0002B06D);    // data 0x6D
+wait(1);
+WRITE(0xD00000F0, 0x0002B00A);    // data 0x0A
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B080);    // data 0x80
+wait(1);
+WRITE(0xD00000F0, 0x0002B043);    // data 0x43
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10150017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A036);    // cmd 0x36
+wait(1);
+WRITE(0xD00000F0, 0x0002B000);    // data 0x00
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10150017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A03A);    // cmd 0x3A
+wait(1);
+WRITE(0xD00000F0, 0x0002B070);    // data 0x70
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(5000);                        // delay 5000μs
+
+WRITE(0xD0000230, 0x10390017);    // ct=39
+wait(1);
+WRITE(0xD00000F0, 0x0002A0B1);    // cmd 0xB1
+wait(1);
+WRITE(0xD00000F0, 0x0002B078);    // data 0x78
+wait(1);
+WRITE(0xD00000F0, 0x0002B024);    // data 0x24
+wait(1);
+WRITE(0xD00000F0, 0x0002B004);    // data 0x04
+wait(1);
+WRITE(0xD00000F0, 0x0002B002);    // data 0x02
+wait(1);
+WRITE(0xD00000F0, 0x0002B002);    // data 0x02
+wait(1);
+WRITE(0xD00000F0, 0x0002B003);    // data 0x03
+wait(1);
+WRITE(0xD00000F0, 0x0002B010);    // data 0x10
+wait(1);
+WRITE(0xD00000F0, 0x0002B010);    // data 0x10
+wait(1);
+WRITE(0xD00000F0, 0x0002B034);    // data 0x34
+wait(1);
+WRITE(0xD00000F0, 0x0002B03C);    // data 0x3C
+wait(1);
+WRITE(0xD00000F0, 0x0002B03F);    // data 0x3F
+wait(1);
+WRITE(0xD00000F0, 0x0002B03F);    // data 0x3F
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10390017);    // ct=39
+wait(1);
+WRITE(0xD00000F0, 0x0002A0B4);    // cmd 0xB4
+wait(1);
+WRITE(0xD00000F0, 0x0002B000);    // data 0x00
+wait(1);
+WRITE(0xD00000F0, 0x0002B008);    // data 0x08
+wait(1);
+WRITE(0xD00000F0, 0x0002B06E);    // data 0x6E
+wait(1);
+WRITE(0xD00000F0, 0x0002B007);    // data 0x07
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B062);    // data 0x62
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B057);    // data 0x57
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10150017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A0CC);    // cmd 0xCC
+wait(1);
+WRITE(0xD00000F0, 0x0002B00B);    // data 0x0B
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+
+WRITE(0xD0000230, 0x10390017);    // ct=39
+wait(1);
+WRITE(0xD00000F0, 0x0002A0E0);    // cmd 0xE0
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B048);    // data 0x48
+wait(1);
+WRITE(0xD00000F0, 0x0002B04D);    // data 0x4D
+wait(1);
+WRITE(0xD00000F0, 0x0002B04E);    // data 0x4E
+wait(1);
+WRITE(0xD00000F0, 0x0002B058);    // data 0x58
+wait(1);
+WRITE(0xD00000F0, 0x0002B0F6);    // data 0xF6
+wait(1);
+WRITE(0xD00000F0, 0x0002B00B);    // data 0x0B
+wait(1);
+WRITE(0xD00000F0, 0x0002B04E);    // data 0x4E
+wait(1);
+WRITE(0xD00000F0, 0x0002B012);    // data 0x12
+wait(1);
+WRITE(0xD00000F0, 0x0002B0D5);    // data 0xD5
+wait(1);
+WRITE(0xD00000F0, 0x0002B015);    // data 0x15
+wait(1);
+WRITE(0xD00000F0, 0x0002B095);    // data 0x95
+wait(1);
+WRITE(0xD00000F0, 0x0002B055);    // data 0x55
+wait(1);
+WRITE(0xD00000F0, 0x0002B08E);    // data 0x8E
+wait(1);
+WRITE(0xD00000F0, 0x0002B011);    // data 0x11
+wait(1);
+WRITE(0xD00000F0, 0x0002B001);    // data 0x01
+wait(1);
+WRITE(0xD00000F0, 0x0002B048);    // data 0x48
+wait(1);
+WRITE(0xD00000F0, 0x0002B04D);    // data 0x4D
+wait(1);
+WRITE(0xD00000F0, 0x0002B055);    // data 0x55
+wait(1);
+WRITE(0xD00000F0, 0x0002B05F);    // data 0x5F
+wait(1);
+WRITE(0xD00000F0, 0x0002B0FD);    // data 0xFD
+wait(1);
+WRITE(0xD00000F0, 0x0002B00A);    // data 0x0A
+wait(1);
+WRITE(0xD00000F0, 0x0002B04E);    // data 0x4E
+wait(1);
+WRITE(0xD00000F0, 0x0002B051);    // data 0x51
+wait(1);
+WRITE(0xD00000F0, 0x0002B0D3);    // data 0xD3
+wait(1);
+WRITE(0xD00000F0, 0x0002B017);    // data 0x17
+wait(1);
+WRITE(0xD00000F0, 0x0002B095);    // data 0x95
+wait(1);
+WRITE(0xD00000F0, 0x0002B096);    // data 0x96
+wait(1);
+WRITE(0xD00000F0, 0x0002B04E);    // data 0x4E
+wait(1);
+WRITE(0xD00000F0, 0x0002B011);    // data 0x11
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(5000);                        // delay 5000μs
+
+WRITE(0xD0000230, 0x10050017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A011);    // cmd 0x11
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(120000);                        // delay 120000μs
+
+WRITE(0xD0000230, 0x10050017);    // ct=15
+wait(1);
+WRITE(0xD00000F0, 0x0002A029);    // cmd 0x29
+wait(1);
+WRITE(0xD00000F0, 0x00033000);    // Force CSN=1, DCN=1
+wait(1);
+wait(120000);                        // delay 120000μs
+
+/* ************************************************* */
+/*         LCD Register Setting, 0xd000_0000         */
+/* ************************************************* */
+WRITE(0xD0000000, 0x00000070);    // DRAM mode, dclk, Falling latch
+WRITE(0xD0000004, 0x0F7F0A60);    // SRC:RGB565, dst 24-bits
+WRITE(0xD0000008, 0x032001E0);    // Layer1:W480xH800
+WRITE(0xD000000C, 0x000003C0);    // pitch=480 X 2=960
+WRITE(0xD0000010, 0x00000000);    // baseA addr
+WRITE(0xD0000014, 0x00000000);    // baseB addr
+WRITE(0xD0000018, 0x00000000);    // baseC addr
+
+/* ************************************************* */
+/*                  Test Color Mode                  */
+/* ************************************************* */
+WRITE(0xD0000020, 0x800000FF);    // test color mode=0, None
+
+/* ************************************************* */
+/*                    CTG Setting                    */
+/* ************************************************* */
+WRITE(0xD0000070, 0x00010300);    // ctg_reset_on
+wait(1);                          // 1 μs
+WRITE(0xD0000070, 0x00000300);    // ctg_reset_off
+
+WRITE(0xD0000070, 0x00000307);    // enable ctg 0 1 2
+WRITE(0xD0000074, 0x03480230);    // htotal=0x0230, vtotal=0x0348
+
+//CTG0 (Hsync)
+WRITE(0xD0000078, 0x20010230);    // set0,p1, line x=htotal,        y=1
+WRITE(0xD000007C, 0x10010010);    // set1,p2       x=HOR.SYNC TIME, y=1
+WRITE(0xD0000080, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000084, 0x00000000);    // set0,p4(0x0,0)
+
+//CTG1 (Vsync)
+WRITE(0xD0000088, 0x60010230);    // set0,p1 ,frame  x=htotal, y=1
+WRITE(0xD000008C, 0x10090230);    // set1,p2         x=htotal, y=VER.SYNC TIME+1
+WRITE(0xD0000090, 0x00000000);    // set1,p3(0x0,0)
+WRITE(0xD0000094, 0x00000000);    // set0,p4(0x0,0)
+
+//CTG2 (DE)
+WRITE(0xD0000098, 0x101A0030);    // set1,p1, line
+WRITE(0xD000009C, 0x233A0210);    // set0,p2 x=HOR.SYNC TIME+HBP+Hor. display area y=(VER.SYNC TIME+1)+VBP+1+Ver. display area
+WRITE(0xD00000A0, 0x101A0030);    // set1,p3
+WRITE(0xD00000A4, 0x233A0210);    // set0,p4
+
+/* ************************************************* */
+/*         MIPI reg base: 0xd0c00000   (HS)          */
+/* ************************************************* */
+//----------HS-----------//
+WRITE(0xD0C00004, 0x0043028E);    // 0x6[7]=BLLP, +0x04[0]=EOTPGE
+WRITE(0xD0C00008, 0x00640064);
+WRITE(0xD0C00010, 0x000F0000);
+WRITE(0xD0C00014, 0x0000003E);    // RGB666(0x1E),RGB888(0x3E)
+WRITE(0xD0C00018, 0x0024100E);    // +0x18[5:0]=CLWR
+WRITE(0xD0C0001C, 0x00000000);    // 24-bits pixel
+WRITE(0xD0C00020, 0x000001E0);    // HACT=480(0x01E0)
+WRITE(0xD0C00028, 0x000005A0);    // 480*3(0x05A0)
+// Write d0c0003c 000000ff f
+WRITE(0xD0C00048, 0x00000005);    // +0x48[6]=HSE Pkt
+// Write d0c00050 000006a0 f
+WRITE(0xD0C00054, 0x00000000);    // HSS(4)+HSA*3+HSE(4)+HBP*3+4+HACT*3+2+HFP*3
+WRITE(0xD0C00058, 0x00000010);
+WRITE(0xD0C00080, 0x00100008);    // VBP=16(0x10), VSA=8(0x08)
+WRITE(0xD0C00084, 0x03200010);    // VACT=800(0x320), VFP=16(0x10)
+WRITE(0xD0C00088, 0x02A40000);    // HBP=32*3(0x0060), HSA=16*3(0x30)
+WRITE(0xD0C0008C, 0x00000000);    // HFP=32*3(0x0060)
+
+WRITE(0xD0C00050, 0x00000000);    // pixel fifo threshold
+
+wait(10);
+wait(150);
+
+/* ************************************************* */
+/*                PWM: GPIO assign 1                 */
+/*            MUST check GPIO mode select            */
+/* ************************************************* */
+// GPIO18 (PWM2)
+// WRITE(0xD1000008, 0x00040000);    // GPIO[31:0] GPIO18 set dir output
+// WRITE(0xD1000000, 0x00040000);    // GPIO[31:0] GPIO18 set high
+
+// GPIO19 (PWM3)
+// WRITE(0xD1000008, 0x00080000);    // GPIO[31:0] GPIO19 set dir output
+// WRITE(0xD1000000, 0x00080000);    // GPIO[31:0] GPIO19 set high
+
+// GPIO20 (PWM4)
+// WRITE(0xD1000008, 0x00100000);    // GPIO[31:0] GPIO20 set dir output
+// WRITE(0xD1000000, 0x00100000);    // GPIO[31:0] GPIO20 set high
+
+// GPIO21 (PWM5)
+// WRITE(0xD1000008, 0x00200000);    // GPIO[31:0] GPIO21 set dir output
+// WRITE(0xD1000000, 0x00200000);    // GPIO[31:0] GPIO21 set high
+
+// GPIO22 (PWM6)
+// WRITE(0xD1000008, 0x00400000);    // GPIO[31:0] GPIO22 set dir output
+// WRITE(0xD1000000, 0x00400000);    // GPIO[31:0] GPIO22 set high
+
+// GPIO59 (PWM4)
+// WRITE(0xD1000088, 0x08000000);    // GPIO[63:32] GPIO59 set dir output
+// WRITE(0xD1000080, 0x08000000);    // GPIO[63:32] GPIO59 set high
+// WRITE(0xD10000EC, 0x00000000);    // GPIO[63:56]
+
+// GPIO85 (PWM4)
+// WRITE(0xD1000108, 0x00200000);    // GPIO[95:64] GPIO85 set dir output
+// WRITE(0xD1000100, 0x00200000);    // GPIO[95:64] GPIO85 set high
+// WRITE(0xD1000168, 0x00000000);    // GPIO[87:80]
+
+// GPIO95 (PWM1)
+// WRITE(0xD1000108, 0x80000000);    // GPIO[95:64] GPIO95 set dir output
+// WRITE(0xD1000100, 0x80000000);    // GPIO[95:64] GPIO95 set high
+// WRITE(0xD100016C, 0x00000000);    // GPIO[95:88]
+
+// -------MIPI End-------- //
+
+/* ************************************************* */
+/*                    Enable LCD                     */
+/* ************************************************* */
+WRITE(0xD000001C, 0x00000001);    // SyncEn
+wait(1);                          // 1 μs
+WRITE(0xD000001C, 0x00000003);    // SyncEn DisplayEn
