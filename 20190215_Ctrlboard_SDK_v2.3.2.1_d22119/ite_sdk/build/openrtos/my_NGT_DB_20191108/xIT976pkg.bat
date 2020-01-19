@@ -1,3 +1,5 @@
+call test.bat
+
 rd CMakeFiles /s /q
 rd data /s /q
 rd lib /s /q
@@ -13,4 +15,5 @@ del *.o /s
 del *.c /s
 del Makefile /s
 ::del *.bat /s
+del *.bmp /s
 exit

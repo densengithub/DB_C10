@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x100
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          319492 (bytes into file)
+  Start of section headers:          318400 (bytes into file)
   Flags:                             0x0
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -31,18 +31,18 @@ Section Headers:
   [ 7] .stack            NOBITS          000383c8 01cd88 014000 00  WA  0   0  1
   [ 8] .comment          PROGBITS        00000000 01cd88 00002c 01  MS  0   0  1
   [ 9] .stab             PROGBITS        00000000 01cdb4 01b8ac 0c     10   0  4
-  [10] .stabstr          STRTAB          00000000 038660 006d53 00      0   0  1
-  [11] .debug_info       PROGBITS        00000000 03f3b3 003fa5 00      0   0  1
-  [12] .debug_abbrev     PROGBITS        00000000 043358 001131 00      0   0  1
-  [13] .debug_loc        PROGBITS        00000000 044489 004f83 00      0   0  1
-  [14] .debug_aranges    PROGBITS        00000000 04940c 0001d8 00      0   0  1
-  [15] .debug_ranges     PROGBITS        00000000 0495e4 000798 00      0   0  1
-  [16] .debug_line       PROGBITS        00000000 049d7c 00115f 00      0   0  1
-  [17] .debug_str        PROGBITS        00000000 04aedb 000ff3 01  MS  0   0  1
-  [18] .debug_frame      PROGBITS        00000000 04bed0 00025c 00      0   0  4
-  [19] .shstrtab         STRTAB          00000000 04df31 0000d0 00      0   0  1
-  [20] .symtab           SYMTAB          00000000 04c12c 0011e0 10     21 117  4
-  [21] .strtab           STRTAB          00000000 04d30c 000c25 00      0   0  1
+  [10] .stabstr          STRTAB          00000000 038660 006933 00      0   0  1
+  [11] .debug_info       PROGBITS        00000000 03ef93 003fa5 00      0   0  1
+  [12] .debug_abbrev     PROGBITS        00000000 042f38 001131 00      0   0  1
+  [13] .debug_loc        PROGBITS        00000000 044069 004f83 00      0   0  1
+  [14] .debug_aranges    PROGBITS        00000000 048fec 0001d8 00      0   0  1
+  [15] .debug_ranges     PROGBITS        00000000 0491c4 000798 00      0   0  1
+  [16] .debug_line       PROGBITS        00000000 04995c 00115f 00      0   0  1
+  [17] .debug_str        PROGBITS        00000000 04aabb 000ff3 01  MS  0   0  1
+  [18] .debug_frame      PROGBITS        00000000 04bab0 00025c 00      0   0  4
+  [19] .shstrtab         STRTAB          00000000 04daf0 0000d0 00      0   0  1
+  [20] .symtab           SYMTAB          00000000 04bd0c 0011e0 10     21 117  4
+  [21] .strtab           STRTAB          00000000 04ceec 000c04 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
@@ -88,7 +88,7 @@ Symbol table '.symtab' contains 286 entries:
     16: 00000000     0 SECTION LOCAL  DEFAULT   16 
     17: 00000000     0 SECTION LOCAL  DEFAULT   17 
     18: 00000000     0 SECTION LOCAL  DEFAULT   18 
-    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS C:/workspace/IT970_Series
+    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS C:/Maksim_user/DB_C10/201
     20: 00000e44     0 NOTYPE  LOCAL  DEFAULT    1 .proc0
     21: 00000000     0 FILE    LOCAL  DEFAULT  ABS codec_crt0.c
     22: 00000000     0 FILE    LOCAL  DEFAULT  ABS ticktimer.c
