@@ -7,7 +7,6 @@ extern bool LogoOnTimer(ITUWidget* widget, char* param);
 //Main
 extern bool MainOnEnter(ITUWidget* widget, char* param);
 extern bool MainOnTimer(ITUWidget* widget, char* param);
-//extern bool MainButtonOnPress(ITUWidget* widget, char* param);
 
 //Upgrade
 extern bool UpgradeOnEnter(ITUWidget* widget, char* param);

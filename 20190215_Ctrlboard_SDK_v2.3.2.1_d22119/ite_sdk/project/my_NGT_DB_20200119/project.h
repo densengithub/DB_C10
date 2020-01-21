@@ -27,7 +27,8 @@
 #include "protocols_stm.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
    extern bool light_set_flag;
@@ -315,7 +316,6 @@ extern "C" {
     /**
 * Initializes storage module.
 */
-
 
 /** @} */ // end of ctrlboard_storage
 

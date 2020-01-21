@@ -11,15 +11,16 @@
 #include "stddef.h"
 
 #ifdef __cplusplus
- extern "C" {
+extern "C"
+{
 #endif
 
-void nmemset(void *_Dst, int _Val, size_t _Size);
-int nmemcmp(const void *_Buf1, const void *_Buf2, size_t _Size);
-void * nmemcpy(void * _Dst, const void * _Src, size_t _Size);
+    void nmemset(void *_Dst, int _Val, size_t _Size);
+    int nmemcmp(const void *_Buf1, const void *_Buf2, size_t _Size);
+    void *nmemcpy(void *_Dst, const void *_Src, size_t _Size);
 
 #ifdef __cplusplus
- {
+}
 #endif
 
 #endif /* USER_MEMMANAGE_H_ */

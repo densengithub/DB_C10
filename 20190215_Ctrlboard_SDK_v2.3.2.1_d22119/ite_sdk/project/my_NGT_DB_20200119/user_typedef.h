@@ -12,6 +12,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /*
 typedef signed char       int8_t;
 typedef signed short      int16_t;
@@ -30,14 +35,6 @@ typedef unsigned int      uint32_t;
 #define     FONT_TALIC                  (3)
 
 /***********font type******************/
-
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 
 #ifdef __cplusplus
 }

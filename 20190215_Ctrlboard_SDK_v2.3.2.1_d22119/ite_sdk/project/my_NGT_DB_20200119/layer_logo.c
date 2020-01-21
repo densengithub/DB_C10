@@ -98,15 +98,8 @@ bool LogoOnEnter(ITUWidget* widget, char* param)
 #ifdef ITU_PLAY_VIDEO_ON_BOOTING
         ituVideoPlay(logoVideo, 0);
         ituVideoSetOnStop(logoVideo, LogoVideoOnStop);
-    #else
-        // ituLayerGoto(mainLayer);
-
-    // if (1)
-    // while(!ev_layer2.layer_displaydata.ScooterInfo.car_status1)
-    // {
-    //     usleep(10000);
-    // }
-     
+    #else    
+    
     if ((local_niu_value_loc.db_loc.data.db_status2 & (CAR_EX_BT1_INCHARGE | CAR_EX_BT2_INCHARGE)) || (local_niu_value_loc.db_loc.data.db_status & (CAR_INCHG)))
     {
         ituLayerGoto(chargeLayer);
@@ -118,10 +111,9 @@ bool LogoOnEnter(ITUWidget* widget, char* param)
     else
     {
         ituLayerGoto(mainLayer);
-    }
-    
-    // ituLayerGoto(chargeLayer);
+    }    
     #endif
+    
     return true;
 }
 

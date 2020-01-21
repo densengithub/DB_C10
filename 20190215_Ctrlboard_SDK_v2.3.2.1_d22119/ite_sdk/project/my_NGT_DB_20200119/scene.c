@@ -1,11 +1,4 @@
-﻿/*
- * @Description: In User Settings Edit
- * @Author: your name
- * @Date: 2019-08-14 10:20:59
- * @LastEditTime: 2019-08-15 11:14:09
- * @LastEditors: Please set LastEditors
- */
-#include <sys/time.h>
+﻿#include <sys/time.h>
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

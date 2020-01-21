@@ -23,26 +23,26 @@ upgradeButton1
 upgradeLineIcon
 upgradeBackground
 */
-ITULayer* upgradeLayer = NULL;
-bool  upgrade_status = false;
-static ITUBackground* upgradeBackground = NULL;
+ITULayer *upgradeLayer = NULL;
+bool upgrade_status = false;
+static ITUBackground *upgradeBackground = NULL;
 // static ITUContainer* upgradeContainer = NULL;
-static ITUText* upgradeTimeText = NULL;
-static ITUText* upgradePrecentText = NULL;
-static ITUText* upgradeTimeTagText1 = NULL;
-static ITUAnimation* upgradeSimpleAnimation = NULL;
+static ITUText *upgradeTimeText = NULL;
+static ITUText *upgradePrecentText = NULL;
+static ITUText *upgradeTimeTagText1 = NULL;
+static ITUAnimation *upgradeSimpleAnimation = NULL;
 // static ITUButton* upgradeButton1 = NULL;
 // static ITUButton* upgradeButton2 = NULL;
 
 bool Layer_upgrade_Init(void)
 {
-    if(!upgradeBackground)
-    {        
+    if (!upgradeBackground)
+    {
         upgradeBackground = ituSceneFindWidget(&theScene, "upgradeBackground");
         assert(upgradeBackground);
         upgradePrecentText = ituSceneFindWidget(&theScene, "upgradePrecentText");
         assert(upgradePrecentText);
-       
+
         upgradeTimeText = ituSceneFindWidget(&theScene, "upgradeTimeText");
         assert(upgradeTimeText);
         upgradeTimeTagText1 = ituSceneFindWidget(&theScene, "upgradeTimeTagText1");
@@ -50,14 +50,9 @@ bool Layer_upgrade_Init(void)
 
         upgradeSimpleAnimation = ituSceneFindWidget(&theScene, "upgradeSimpleAnimation");
         assert(upgradeSimpleAnimation);
-        // upgradeButton1 = ituSceneFindWidget(&theScene, "upgradeButton1");
-        // assert(upgradeButton1);
-        // upgradeButton2 = ituSceneFindWidget(&theScene, "upgradeButton2");
-        // assert(upgradeButton2);
 
-        // ituTextSetString(upgradePrecentText, "0%");  
-        upgradeSimpleAnimation->totalframe = 152;//180
-        upgradeSimpleAnimation->delay = 1;        
+        upgradeSimpleAnimation->totalframe = 152; //180
+        upgradeSimpleAnimation->delay = 1;
     }
     ituTextSetString(upgradePrecentText, "0%");
     return false;
@@ -73,10 +68,10 @@ bool UpgradeLayer_Precent_Display(int dis_pre)
     // sprintf(buffer, "%02d%%", dis_pre);
     sprintf(buffer, "%d", dis_pre);
     strcat(buffer, "%");
-    if(0 != strcmp(ituTextGetString(upgradePrecentText),buffer))
-	{
-		ituTextSetString(upgradePrecentText, buffer);
-	}
+    if (0 != strcmp(ituTextGetString(upgradePrecentText), buffer))
+    {
+        ituTextSetString(upgradePrecentText, buffer);
+    }
     return false;
 }
 
@@ -92,43 +87,27 @@ bool UpgradeLayer_Remaintime_Display(int dis_time)
     sprintf(buffer_t, " %d ", dis_time);
     strcat(buffer, buffer_t);
     strcat(buffer, "min remaining");
-    if(0 != strcmp(ituTextGetString(upgradeTimeTagText1),buffer))
-	{
-		ituTextSetString(upgradeTimeTagText1, buffer);
-	}
+    if (0 != strcmp(ituTextGetString(upgradeTimeTagText1), buffer))
+    {
+        ituTextSetString(upgradeTimeTagText1, buffer);
+    }
     return false;
 }
 
-bool UpgradeOnEnter(ITUWidget* widget, char* param)
+bool UpgradeOnEnter(ITUWidget *widget, char *param)
 {
-    Layer_upgrade_Init();   
-    Layer_upgrade_time_init();   
+    Layer_upgrade_Init();
+    Layer_upgrade_time_init();
     SceneSetReady(true);
     upgrade_status = true;
     testmode_status = false;
-    charge_status = false;	
+    charge_status = false;
     Layer_MainMode_Task(&ev_layer2);
     return true;
 }
 
-bool UpgradeOnTimer(ITUWidget* widget, char* param)
+bool UpgradeOnTimer(ITUWidget *widget, char *param)
 {
-    // if((!board_test)&&(!module_test))
-	// {
-	// 	if((local_niu_value_loc.db_loc.data.db_status&(CAR_INCHG)))	
-	// 	{
-    //         ituLayerGoto(chargeLayer);			
-	// 		return true;
-	// 	}
-	// 	else if(!(local_niu_value_loc.db_loc.data.db_status&(CAR_VCU_UPDATE)))
-	// 	{
-	// 		ituLayerGoto(mainLayer);
-	// 		return true;
-	// 	}
-    // }
-    
-    // upgrade_status = true;
-    layer_Signal_Display();   
+    layer_Signal_Display();
     return false;
 }
-

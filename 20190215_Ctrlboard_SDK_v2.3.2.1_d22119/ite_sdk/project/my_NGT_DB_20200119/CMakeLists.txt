@@ -18,17 +18,8 @@ add_definitions(
     )
     
 # user app
-if (DEFINED CFG_LCD_POWER_ENABLE)
-    add_definitions(
-        -DCFG_LCD_POWER_ENABLE
-        -DCFG_GPIO_LCD_POWER_CTL=${CFG_GPIO_LCD_POWER_CTL} 
-        -DCFG_GPIO_LCD_RESET_CTL=${CFG_GPIO_LCD_RESET_CTL}         
-        )
-endif()
+include(${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/appdash.cmake)
 
-add_definitions(
-    -DCFG_NIU_PANEL_VERSION="${CFG_NIU_PANEL_VERSION}"
-    )
 
 if (DEFINED CFG_PLAY_VIDEO_ON_BOOTING)
     add_definitions(
@@ -82,7 +73,7 @@ add_executable(${CMAKE_PROJECT_NAME}
     main.c    
     scene.c
     upgrade.c 
-	external.c
+    external.c
     storage.c 
     bsp_communication.c
     comm_mem_manage.c
@@ -129,54 +120,24 @@ file(COPY
     DESTINATION ${CMAKE_BINARY_DIR}/data/private
     )
 
-file(COPY
-    ${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/${CFG_ITU_PATH}/spcurve.png
-    ${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/${CFG_ITU_PATH}/escurve.png
-    DESTINATION ${CMAKE_BINARY_DIR}/data/private
-    )
-    
+# file(COPY
+#     ${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/${CFG_ITU_PATH}/spcurve.png
+#     ${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/${CFG_ITU_PATH}/escurve.png
+#     DESTINATION ${CMAKE_BINARY_DIR}/data/private
+#     )
 
 # font
 file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/${CFG_FONT_FILENAME}
-      ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Medium.ttf
-      ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Regular.ttf
-      ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-BoldItalic.ttf
-      ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Bold.ttf
-      ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-MediumItalic.ttf
+    # ${PROJECT_SOURCE_DIR}/data/font/${CFG_FONT_FILENAME}
+    ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Medium.ttf
+    ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Regular.ttf
+    ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-BoldItalic.ttf
+    ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Bold.ttf
+    ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-MediumItalic.ttf
+    # ${PROJECT_SOURCE_DIR}/data/font/SourceHanSansCN-Medium.ttf
+    # ${PROJECT_SOURCE_DIR}/data/font/SourceHanSansCN-Normal.ttf
     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
     )
-
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Medium.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )	
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Regular.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-BoldItalic.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-Bold.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/DINNextLTPro-MediumItalic.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )
-
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/SourceHanSansCN-Medium.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )    
-# file(COPY
-#     ${PROJECT_SOURCE_DIR}/data/font/SourceHanSansCN-Normal.ttf
-#     DESTINATION ${CMAKE_BINARY_DIR}/data/private/font
-#     )
-
 
 # web
 # file(GLOB files ${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/web/*.*)
@@ -224,7 +185,7 @@ file(COPY
 		DESTINATION ${CMAKE_BINARY_DIR}/data/public/media/boot/
 		)
 		
-		
+# layer		
 include(${PROJECT_SOURCE_DIR}/project/${CMAKE_PROJECT_NAME}/layer.cmake)
 
 # build

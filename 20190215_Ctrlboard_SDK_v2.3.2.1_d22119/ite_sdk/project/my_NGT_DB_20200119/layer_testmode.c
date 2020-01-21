@@ -187,8 +187,8 @@ Background28
 Background19
 */
 #pragma execution_character_set("utf-8")
-#define  LED_MAX        11
-#define  INPUT_MAX      6
+#define  LED_MAX        (11)
+#define  INPUT_MAX      (6)
 
 //testmodeLayer
 ITULayer* testmodeLayer = NULL;
@@ -293,10 +293,10 @@ bool testmodeLayer_module_Display(bool dis_visible,int dis_list)
             ituWidgetSetVisible(testRow5Container, dis_visible);
             ituWidgetSetVisible(testRow6Container, dis_visible);
             break;
-        case 1:
-            break;
-        case 2:
-            break;
+        // case 1:
+        //     break;
+        // case 2:
+        //     break;
         case 3:
             ituWidgetSetVisible(testPsensor1Container, dis_visible);
             break;
@@ -382,7 +382,6 @@ bool testmodeLayer_spiflash_DisplayConfig(int flash_dis)
     return true;
 }
 
-// bool testmodeLayer_ntc_DisplayConfig(int ntc_ad_dis,int ntc_dat_dis,int ntc_dis)
 bool testmodeLayer_ntc_DisplayConfig(int ntc_ad_dis,int ntc_dat_dis)
 {
     char buff[10] = {0};
@@ -391,7 +390,7 @@ bool testmodeLayer_ntc_DisplayConfig(int ntc_ad_dis,int ntc_dat_dis)
     // if (ntc_dis < 3)
     // {
         // ituSpriteGoto(testNtcSprite, ntc_dis);
-        if (ntc_ad_dis >= 0x0FFF || ntc_ad_dis == 0)
+        if ((ntc_ad_dis >= 0x0FFF) || (ntc_ad_dis == 0))
         {
             ituSpriteGoto(testNtcSprite, 1);
         }
@@ -412,7 +411,7 @@ bool testmodeLayer_ntc_DisplayConfig(int ntc_ad_dis,int ntc_dat_dis)
     // printf("buff= %s....\t\n", buff);
     sprintf(buff1, "%d", ntc_dat_dis);
     // strcat(buff1, &tempbuff[3]);
-    strcat(buff1, (testNtcText2->stringSet->strings[0]+3));
+    strcat(buff1, (testNtcText2->stringSet->strings[0] + 3));
     // printf("buff1 = %s....\t\n", buff1);
     ituTextSetString(testNtcText2, buff1);    
     ituWidgetSetVisible(testRow3Container, true);
@@ -421,14 +420,13 @@ bool testmodeLayer_ntc_DisplayConfig(int ntc_ad_dis,int ntc_dat_dis)
 }
 
 
-// bool testmodeLayer_psensor1_DisplayConfig(int psensor_ad_dis,int psensor_dis)
 bool testmodeLayer_psensor1_DisplayConfig(int psensor_ad_dis)
 {
     char buff[10] = {0};
     bool ret = false;
     // if (psensor_dis < 3)
     // {
-        if (psensor_ad_dis >= 0x0FFF || psensor_ad_dis == 0)
+        if ((psensor_ad_dis >= 0x0FFF) || (psensor_ad_dis == 0))
         {
             ituSpriteGoto(testPsensor1Sprite, 1);
         }
@@ -443,14 +441,13 @@ bool testmodeLayer_psensor1_DisplayConfig(int psensor_ad_dis)
     return ret;
 }
 
-// bool testmodeLayer_psensor2_DisplayConfig(int psensor_ad_dis,int psensor_dis)
 bool testmodeLayer_psensor2_DisplayConfig(int psensor_ad_dis)
 {
     char buff[10] = {0};
     bool ret = false;
     // if (psensor_dis < 3)
     // {
-        if (psensor_ad_dis >= 0x0FFF || psensor_ad_dis == 0)
+        if ((psensor_ad_dis >= 0x0FFF) || (psensor_ad_dis == 0))
         {
             ituSpriteGoto(testPsensor2Sprite, 1);
         }
@@ -471,7 +468,7 @@ void Layer_Sprite_Init(ITUSprite* sprite,int index)
 {
     if(sprite != NULL)
     {
-        sprite->delay = 1;
+        sprite->delay = 0;
 		ituSpriteStop(sprite);
 		ituSpriteGoto(sprite, index);
     }
@@ -540,7 +537,6 @@ bool testmodeLayer_pass_DisplayConfig(int pass_dis)
         buff[2] = 'I';
         buff[3] = 'L';
         isvisible = true;
-        
         break;
     case 1:
         buff[0] = 'P';
@@ -571,7 +567,7 @@ void Layer_Uart_Init(void)
     {
         testUartSprite = ituSceneFindWidget(&theScene, "testUartSprite");
         assert(testUartSprite);
-        Layer_Sprite_Init(testUartSprite,0);
+        Layer_Sprite_Init(testUartSprite, 0);
     }
 }
 
@@ -581,7 +577,7 @@ void Layer_Usb_Init(void)
     {
         testUsbSprite = ituSceneFindWidget(&theScene, "testUsbSprite");
         assert(testUsbSprite);
-        Layer_Sprite_Init(testUsbSprite,0);	
+        Layer_Sprite_Init(testUsbSprite, 0);
     }
 }
 
@@ -595,7 +591,7 @@ void Layer_Psensor1_Init(void)
         assert(testPsensor1Text);
         testPsensor1Container = ituSceneFindWidget(&theScene, "testPsensor1Container");
         assert(testPsensor1Container);
-        Layer_Sprite_Init(testPsensor1Sprite,0);
+        Layer_Sprite_Init(testPsensor1Sprite, 0);
         ituTextSetString(testPsensor1Text, "0x0000");
     }
 }
@@ -677,21 +673,7 @@ void Layer_Bt_Init(void)
 
 void Layer_Input_Init(void)
 {
-    int i = 0;
-    // static ITUSprite* testInRightSprite = NULL;
-    // static ITUSprite* testInLeftSprite = NULL;
-    // static ITUSprite* testInLightSprite = NULL;
-    // static ITUSprite* testInBp1Sprite = NULL;
-    // static ITUSprite* testInBp2Sprite = NULL;
-    // static ITUSprite* testInAccSprite = NULL;
-
-    // static ITUContainer *testInRightContainer = NULL;
-    // static ITUContainer *testInLeftContainer = NULL;
-    // static ITUContainer *testInLightContainer = NULL;
-    // static ITUContainer *testInBp1Container = NULL;
-    // static ITUContainer *testInBp2Container = NULL;
-    // static ITUContainer *testInAccContainer = NULL;
-
+    int i = 0;   
     if(!testInputText1)
     {
         testInputText1 = ituSceneFindWidget(&theScene, "testInputText1");
@@ -735,30 +717,7 @@ void Layer_Input_Init(void)
 }
 
 void Layer_Led_Init(void)
-{
-    // static ITUSprite* testLedSysSprite = NULL;
-    // static ITUSprite* testLedRightSprite = NULL;
-    // static ITUSprite* testLedHotSprite = NULL;
-    // static ITUSprite* testLedWarnSprite = NULL;
-    // static ITUSprite* testLedFaultSprite = NULL;
-    // static ITUSprite* testLedParkSprite = NULL;
-    // static ITUSprite* testLedChgSprite = NULL;
-    // static ITUSprite* testLedFarSprite = NULL;
-    // static ITUSprite* testLedLowSprite = NULL;
-    // static ITUSprite* testLedLeftSprite = NULL;
-    // static ITUSprite* testLedAbsSprite = NULL;
-
-    // static ITUContainer *testLedSysContainer = NULL;
-    // static ITUContainer *testLedRightContainer = NULL;
-    // static ITUContainer *testLedHotContainer = NULL;
-    // static ITUContainer *testLedWarnContainer = NULL;
-    // static ITUContainer *testLedFaultContainer = NULL;
-    // static ITUContainer *testLedParkContainer = NULL;
-    // static ITUContainer *testLedChgContainer = NULL;
-    // static ITUContainer *testLedFarContainer = NULL;
-    // static ITUContainer *testLedLowContainer = NULL;
-    // static ITUContainer *testLedLeftContainer = NULL;
-    // static ITUContainer *testLedAbsContainer = NULL;
+{  
     int i = 0;
     if(!testLedText1)
     {

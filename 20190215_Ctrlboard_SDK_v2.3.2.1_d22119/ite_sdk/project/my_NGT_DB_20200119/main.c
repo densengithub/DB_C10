@@ -62,18 +62,14 @@ retry_backup:
 
     SceneInit();
 	ExternalInit();
-	StorageInit();
-    // printf("BspGpioInit!.......\n");
-    // BspGpioInit();
-    #ifndef DEMO_BUG_RUN
+    StorageInit();
+       
+#ifndef DEMO_BUG_RUN
     DeviceDataSheetInit();
     SendModuleVer_Handle();
-    // printf("CreateAppComunicationTask!.......\t\n");
     CreateAppComunicationTask();
-    // CreateAppPsensorTask();
-    #endif
-    // printf("Test_IIC_ComunicationTask!.......\n");
-    // Test_IIC_ComunicationTask();
+#endif
+
     SceneLoad();
     ret = SceneRun();
 

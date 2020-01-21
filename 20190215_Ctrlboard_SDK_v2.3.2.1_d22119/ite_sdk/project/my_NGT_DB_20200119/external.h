@@ -7,25 +7,19 @@
  */
 #ifndef EXTERNAL_H
 #define EXTERNAL_H
-
-#include "ite/itp.h"
-
 /** @defgroup ctrlboard_external External
 *  @{
 */
+
+#include "ite/itp.h"
+
+
 #define EXTERNAL_BUFFER_SIZE 	12 ///< External buffer size
 #define EXT_MAX_QUEUE_SIZE      8
 
 typedef enum
 {
-	// EXTERNAL_SHOW_MSG,  ///< Show message
-	// EXTERNAL_TEST0,     ///< Test #0
-	// EXTERNAL_TEST1,     ///< Test #1
-	// EXTERNAL_TEST2,     ///< Test #2
-	// EXTERNAL_TEST3,     ///< Test #3
-	// EXTERNAL_TEST4,     ///< Test #4
-	// EXTERNAL_TEST5      ///< Test #5
-	EXTERNAL_UPDATA=1,
+	EXTERNAL_UPDATA = 1,
 	EXTERNAL_TESTMODE,
 	EXTERNAL_TESTMODE_PSENSOR,
 	EXTERNAL_DEMO,
@@ -33,7 +27,7 @@ typedef enum
 	EXTERNAL_TIMEOUT,
 	EXTERNAL_BACKLIGHT,
 	EXTERNAL_ST_VER,
-	EXTERNAL_PL_VER	
+	EXTERNAL_PL_VER
 } ExternalEventType;
 
 typedef struct

@@ -5,10 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <time.h>
-
+#include "SDL/SDL.h"
+#include "scene.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 typedef enum _user_time_typedef_

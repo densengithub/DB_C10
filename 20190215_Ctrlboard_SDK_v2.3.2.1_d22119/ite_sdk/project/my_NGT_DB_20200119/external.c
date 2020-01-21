@@ -24,10 +24,6 @@ static void* ExternalCheckTask(void* arg)
 	int ret = 0, num = 0, j = 0, i = 0;
 
 	printf("Run ExternalCheckTask!\n");
-	// while (!SceneReadReady())
-	// {
-	// 	usleep(1 * 1000);
-	// }
 	while (1)
 	{
 		//  sem_wait(&ExternaltaskSem);
@@ -38,34 +34,6 @@ static void* ExternalCheckTask(void* arg)
 			 // if (ev_layer2.type == EXTERNAL_UPDATA)
 			 if (ev_user.type == EXTERNAL_UPDATA)
 			 {				
-				//  printf("sizeof(ScooterInfo_Typedef)=%d..\t\n", sizeof(ScooterInfo_Typedef));
-				//  niu_data_read_value_loc(NIU_DB, NIU_ID_DB_LOC_STATUS, (ev_layer2.layer_displaydata.DisplayDatabuffer), sizeof(ScooterInfo_Typedef));
-				//  for (i = 0; i < (NIU_ID_DB_LOC_MAX - NIU_ID_DB_LOC_STATUS); i++)
-				//  {
-				// 	 num = niu_data_get_datalen_loc(NIU_DB, NIU_ID_DB_LOC_STATUS + i);
-				// 	 // printf("rd_id + i=%d,num=%d....\n", NIU_ID_DB_LOC_STATUS + i, num);
-				// 	 niu_data_read_value_loc(NIU_DB, NIU_ID_DB_LOC_STATUS + i, (ev_layer2.layer_displaydata.DisplayDatabuffer + j), num);
-				// 	 j += num;
-				//  }
-				#if 0
-				if (SceneReadReady())
-				{
-					if (memcmp(ev_layer2.layer_displaydata.DisplayDatabuffer, local_niu_value_loc.db_loc.buff, sizeof(NIU_DATA_BODY_DB_LOC)) != 0)
-					{
-						memcpy(ev_layer2.layer_displaydata.DisplayDatabuffer, niu_data_get_pdata_loc(NIU_DB, NIU_ID_DB_LOC_STATUS), sizeof(NIU_DATA_BODY_DB_LOC));
-
-						ev.type = EXTERNAL_UPDATA;
-						if (Layer_ExternalSend(&ev) == -1)
-						{
-							// printf("ExternalSend(&ev) fail...\n");
-						}
-						else
-						{
-							// printf("ExternalSend(&ev) success...\n");
-						}
-					}
-				}
-				#else
 
 				if (memcmp(ev_layer2.layer_displaydata.DisplayDatabuffer, local_niu_value_loc.db_loc.buff, sizeof(NIU_DATA_BODY_DB_LOC)) != 0)
 				{
@@ -78,14 +46,8 @@ static void* ExternalCheckTask(void* arg)
 						{
 							printf("ExternalSend(&ev) fail...\n");
 						}
-						// else
-						// {
-						// 	printf("ExternalSend(&ev) success...\n");
-						// }
 					}
 				}
-
-#endif
 
 				//  for (i = 0; i < sizeof(ScooterInfo_Typedef); i++)
 				//  {
@@ -111,18 +73,11 @@ static void* ExternalCheckTask(void* arg)
 					 {
 						  printf("Layer_ev fail...\t\n");
 					 }
-					//  else
-					//  {
-					// 	  printf("Layer_ev success...\t\n");
-					//  }
 				 }	
 				 light_set_flag = true;			
 			 }
 		 }
-		//  else
-		//  {
-		// 	 printf("Layer_ExternalReceive no data!\n");
-		//  }
+
 		 if (light_set_flag)
 		 {
 			//  printf("light=%d\t\n", ev_layer2.layer_displaydata.ScooterInfo.light_percent);
@@ -152,10 +107,6 @@ void ExternalInit(void)
 	{
 		printf("Create external_in fail!.......\n");
 	}
-	// else
-	// {
-	// 	printf("Create external_in success!.......\n");
-	// }
 
     // extInQueue = mq_open("external_in", O_CREAT | O_NONBLOCK, 0644, &qattr);
     // assert(extInQueue != -1);

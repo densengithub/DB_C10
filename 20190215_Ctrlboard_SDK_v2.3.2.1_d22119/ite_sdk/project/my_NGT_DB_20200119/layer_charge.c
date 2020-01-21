@@ -27,8 +27,6 @@ chargeButton1
 
 ITULayer* chargeLayer = NULL;
 bool  charge_status = false;
-// static bool backward = false;
-// static int test_step = 0;
 static ITUBackground* chargeBackground = NULL;
 static ITUContainer* chargeContainer = NULL;
 static ITUText* chargeTimeText = NULL;
@@ -71,9 +69,7 @@ bool Layer_charge_Init(void)
 
 		ituWidgetSetVisible(chargeTimeTagText0, true);
 		ituWidgetSetVisible(chargeTimeTagText1, true);
-		//ituWidgetSetVisible(chargeTimeTagText0, false);
-		//ituTextSetString(chargeTimeTagText0, "00:00");
-		//ituTextSetString(chargeTimeTagText1, "00:00");
+
         ituTextSetString(chargeTimeText, "00:00");
         // ituWidgetSetPosition(chargeStarIcon, 46, 113);
         ituWidgetSetX(chargeStarIcon, 46);//left:46,right:465
@@ -132,9 +128,7 @@ bool ChargeOnEnter(ITUWidget* widget, char* param)
     Layer_charge_bottom_init();
     Layer_charge_time_init();
     SceneSetReady(true);
-    // test_step = 0;
     charge_status = true;
-    // backward = false;
     testmode_status = false;
     upgrade_status = false;
     Layer_MainMode_Task(&ev_layer2);
@@ -143,79 +137,10 @@ bool ChargeOnEnter(ITUWidget* widget, char* param)
 
 bool ChargeOnTimer(ITUWidget* widget, char* param)
 {
-    int px_s = 0, dx_s = 0; 
-
-    #ifndef DEMO_BUG_RUN  
-    // if((!board_test)&&(!module_test))
-	// {
-    //     if((local_niu_value_loc.db_loc.data.db_status&(CAR_VCU_UPDATE)))
-	// 	{
-	// 		ituLayerGoto(upgradeLayer);
-	// 		return true;
-	// 	}		
-	// 	else if(!(local_niu_value_loc.db_loc.data.db_status&(CAR_INCHG)))	
-	// 	{
-	// 		ituLayerGoto(mainLayer);
-	// 		return true;
-	// 	}
-    // }
-    
-    // if(local_niu_value_loc.db_loc.data.db_status2&(CAR_EX_BT1_INCHARGE|CAR_EX_BT2_INCHARGE)==0)
-    // if(!(local_niu_value_loc.db_loc.data.db_status&CAR_INCHG)&&((!board_test)&&(!module_test)))
-	// {
-	// 	ituLayerGoto(mainLayer);
-	// 	return true;
-	// } 
-    #endif
-    
     if(charge_status)
-    {
-        #if 0
-        test_step++;
-        if(test_step>75)
-        {
-            test_step %= 75;
-            backward = !backward;
-        }
-        px_s = (test_step * 11) >> 1;
-        if(backward)
-        {
-			ituWidgetSetX(chargeStarIcon, 465 - px_s - 29); //left:46,right:465
-        }
-        else
-        {
-			ituWidgetSetX(chargeStarIcon, 46 + px_s); //left:46,right:465
-        } 
-        #endif
-
-        #if 0
-        if (sidestand_temple_status)
-        {
-            if (delay_count % 3 == 0)
-            {
-                side_isvisible = !side_isvisible;
-            }
-            delay_count++;
-            if (delay_count / 3 >= 6)
-            {
-                sidestand_temple_status = false;
-                side_isvisible = true;
-                delay_count = 0;
-            }
-            ituWidgetSetVisible(chargeSideIcon, side_isvisible);
-            return true;
-        }
-        else
-        {
-            delay_count = 0;
-            side_isvisible = true;
-        }
-        #endif
-
+    {  
         layer_SideStand_Display();
-        layer_Signal_Display();
-        // return true;
-
+        layer_Signal_Display();        
     }
     return false;
 }

@@ -695,7 +695,6 @@ endmenu
 
 config CFG_PROJECT
 	string
-	option env="CFG_PROJECT"
-    
+	option env="CFG_PROJECT"    
 
 source "$CMAKE_SOURCE_DIR/project/$CFG_PROJECT/Kconfig_dash"
