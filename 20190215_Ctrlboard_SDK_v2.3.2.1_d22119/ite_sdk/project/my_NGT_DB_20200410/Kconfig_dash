@@ -1,0 +1,56 @@
+#
+# For a description of the syntax of this configuration file,
+# see Documentation/kbuild/kconfig-language.txt.
+#
+
+######################################################################
+# Configuration start
+######################################################################
+menu "NIU ColorDash Environment"
+
+config LCD_POWER_ENABLE
+	bool "LCD Power Enable"
+	depends on LCD_ENABLE
+	default n	
+	help
+		Enable LCD Power or not.
+	help_cht
+		啟用 LCD Power 功能。
+	help_chs
+		启用 LCD Power 功能。
+
+config GPIO_LCD_POWER_CTL        
+	string "LCD Power Enable Pin"
+	default "16"
+	depends on LCD_POWER_ENABLE
+	help
+		The GPIO number for LCD power enable pin.
+	help_cht
+		LCD 電源的 GPIO 號碼。
+	help_chs
+		LCD 电源的 GPIO 接口。
+
+config GPIO_LCD_RESET_CTL        
+	string "LCD Reset Pin"
+	default "24"
+	depends on LCD_POWER_ENABLE
+	help
+		The GPIO number for LCD reset enable pin.
+	help_cht
+		LCD 复位的 GPIO 號碼。
+	help_chs
+		LCD 复位的 GPIO 接口。        
+
+config NIU_PANEL_VERSION      
+	string "NIU Color Dash Panel Version"
+	default "R1S01V03"
+	
+	help
+		Major number of color dash panel version information.
+	help_cht
+		彩屏儀表顯示單元主要版號。
+	help_chs
+		彩屏仪表显示单元主要版号。
+	
+endmenu
+
